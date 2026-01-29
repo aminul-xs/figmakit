@@ -10,12 +10,15 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"noEmit": true,
-		"jsx": "react-jsx",
 		"strict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
-		"typeRoots": ["./node_modules/@types", "./node_modules/@figma"]
+		"jsx": "react-jsx",
+		"typeRoots": [
+			"./node_modules/@types",
+			"./node_modules/@figma",
+		]
 	},
 	"include": ["src"]
 }

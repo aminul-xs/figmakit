@@ -32,7 +32,7 @@ function App() {
 	};
 
 	return (
-		<div className="app" style={{ background: 'red' }}>
+		<div className="app" style={{ background: 'green' }}>
 			<h1>Figma Plugin + Vite + React X</h1>
 
 			<div className="card">
