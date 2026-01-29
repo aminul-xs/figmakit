@@ -1,12 +1,16 @@
 {
-	"name": "figma-test",
-	"id": "1598378648235852112",
+	"name": "figmakit",
+	"id": "1598563008061139667",
 	"api": "1.0.0",
 	"main": "dist/code.js",
 	"capabilities": ["inspect", "vscode"],
 	"enableProposedApi": false,
 	"documentAccess": "dynamic-page",
-	"editorType": ["dev", "figma"],
+	"editorType": [
+		"dev",
+		"figma",
+		"figjam"
+	],
 	"ui": "dist/index.html",
 	"networkAccess": {
 		"allowedDomains": ["none"]
