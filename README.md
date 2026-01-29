@@ -15,6 +15,7 @@ npm run dev
 ```
 
 This will:
+
 - Start Vite dev server for the UI with hot reload
 - Watch and rebuild plugin code on changes
 
@@ -50,5 +51,6 @@ src/
 ## Communication
 
 The plugin uses `postMessage` API:
+
 - UI → Plugin: `parent.postMessage({ pluginMessage: {...} }, '*')`
 - Plugin → UI: `figma.ui.postMessage({...})`

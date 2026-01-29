@@ -1,7 +1,7 @@
 {
-	"name": "figma-plugin-vite-react",
+	"name": "figmakit",
 	"version": "1.0.0",
-	"description": "Figma plugin with Vite and React",
+	"description": " FigmaKit - Figma to WordPress Converter",
 	"type": "module",
 	"scripts": {
 		"dev:ui": "vite build --watch",
@@ -10,7 +10,10 @@
 
 		"build:ui": "vite build",
 		"build:plugin": "node build-plugin.js",
-		"build": "concurrently \"npm run build:ui\" \"npm run build:plugin\""
+		"build": "concurrently \"npm run build:ui\" \"npm run build:plugin\"",
+
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
 	},
 	"dependencies": {
 		"react": "^19.2.4",
@@ -23,6 +26,7 @@
 		"@vitejs/plugin-react": "^5.1.2",
 		"concurrently": "^9.2.1",
 		"esbuild": "^0.27.2",
+		"prettier": "^3.8.1",
 		"typescript": "^5.9.3",
 		"vite": "^7.3.1",
 		"vite-plugin-singlefile": "^2.3.0"
