@@ -1,104 +1,104 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #213547;
-  background-color: #ffffff;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+	color: #213547;
+	background-color: #ffffff;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 16px;
+	margin: 0;
+	padding: 16px;
 }
 
 .app {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
+	max-width: 600px;
+	margin: 0 auto;
+	text-align: center;
 }
 
 h1 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: #000;
+	font-size: 1.5rem;
+	margin-bottom: 1.5rem;
+	color: #000;
 }
 
 .card {
-  padding: 1.5rem;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  background: #f9f9f9;
+	padding: 1.5rem;
+	border: 1px solid #e5e5e5;
+	border-radius: 8px;
+	margin-bottom: 1rem;
+	background: #f9f9f9;
 }
 
 .input-group {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-start;
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: flex-start;
 }
 
 label {
-  font-weight: 500;
-  font-size: 0.9rem;
+	font-weight: 500;
+	font-size: 0.9rem;
 }
 
-input[type="number"] {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
+input[type='number'] {
+	width: 100%;
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 1rem;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #18A0FB;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  width: 100%;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	padding: 0.6rem 1.2rem;
+	font-size: 1rem;
+	font-weight: 500;
+	font-family: inherit;
+	background-color: #18a0fb;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	width: 100%;
 }
 
 button:hover {
-  background-color: #0d8ce8;
+	background-color: #0d8ce8;
 }
 
 button:active {
-  background-color: #0880dc;
+	background-color: #0880dc;
 }
 
 .close-btn {
-  background-color: #f3f3f3;
-  color: #333;
-  border: 1px solid #ccc;
+	background-color: #f3f3f3;
+	color: #333;
+	border: 1px solid #ccc;
 }
 
 .close-btn:hover {
-  background-color: #e5e5e5;
+	background-color: #e5e5e5;
 }
 
 .message {
-  margin-top: 1rem;
-  padding: 0.5rem;
-  background-color: #d4edda;
-  color: #155724;
-  border-radius: 4px;
-  font-size: 0.9rem;
+	margin-top: 1rem;
+	padding: 0.5rem;
+	background-color: #d4edda;
+	color: #155724;
+	border-radius: 4px;
+	font-size: 0.9rem;
 }
