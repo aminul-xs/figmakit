@@ -1,0 +1,30 @@
+{
+	"name": "figma-plugin-vite-react",
+	"version": "1.0.0",
+	"description": "Figma plugin with Vite and React",
+	"type": "module",
+	"scripts": {
+		"dev:ui": "vite build --watch",
+		"dev:plugin": "node build-plugin.js --watch",
+		"dev": "concurrently \"npm run dev:ui\" \"npm run dev:plugin\"",
+
+		"build:ui": "vite build",
+		"build:plugin": "node build-plugin.js",
+		"build": "concurrently \"npm run build:ui\" \"npm run build:plugin\""
+	},
+	"dependencies": {
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4"
+	},
+	"devDependencies": {
+		"@figma/plugin-typings": "^1.123.0",
+		"@types/react": "^19.2.10",
+		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react": "^5.1.2",
+		"concurrently": "^9.2.1",
+		"esbuild": "^0.27.2",
+		"typescript": "^5.9.3",
+		"vite": "^7.3.1",
+		"vite-plugin-singlefile": "^2.3.0"
+	}
+}
