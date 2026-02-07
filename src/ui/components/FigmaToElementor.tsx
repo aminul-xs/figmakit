@@ -13,7 +13,6 @@ export default function FigmaToElementor() {
 	const handleFetchFromPlugin = () => {
 		setLoading(true);
 		setError('');
-        console.log('Fetching Figma nodes from plugin...', parent);
         
 		// Ask the plugin code to send us the current file's nodes
 		parent.postMessage(
@@ -28,7 +27,7 @@ export default function FigmaToElementor() {
 	useEffect(() => {
 		window.onmessage = (event) => {
 			const msg = event.data.pluginMessage;
-			console.log('msg received in UI:', msg);
+			console.log('msg received in UI #2:', msg);
 
 			if (msg?.type === 'figma-nodes-data') {
 				try {

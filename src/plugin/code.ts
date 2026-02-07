@@ -10,12 +10,11 @@ function serializeNode(node: BaseNode): any {
 		name: node.name,
 		type: node.type,
 	};
-	console.log('node.type', node.type);
 	
 	// Add text-specific properties
 	if (node.type === 'TEXT') {
 		const textNode = node as TextNode;
-		console.log('textNode.characters:', textNode.characters);
+		// console.log('textNode.characters:', textNode.characters);
 		
 		base.characters = textNode.characters;
 
@@ -74,11 +73,12 @@ function serializeNode(node: BaseNode): any {
 // Listen for messages from the UI
 figma.ui.onmessage = async (msg) => {
 	if (msg.type === 'get-figma-nodes') {
+		console.log('msg received in UI #1:', msg);
 		try {
 			// Get only selected nodes
 			const selection = figma.currentPage.selection;
-			console.log('selection:', selection);
-			console.log('figma.currentPage', figma.currentPage);
+			// console.log('selection:', selection);
+			// console.log('figma.currentPage', figma.currentPage);
 			
 			
 			if (!selection || selection.length === 0) {
@@ -107,7 +107,5 @@ figma.ui.onmessage = async (msg) => {
 		}
 	}
 };
-console.log('figma.ui:', figma.ui);
-console.log('figma', figma);
 
 
