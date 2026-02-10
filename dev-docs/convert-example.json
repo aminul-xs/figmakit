@@ -1,7 +1,7 @@
 {
 	"content": [
 		{
-			"id": "28ba3391",
+			"id": "1becddff",
 			"settings": {
 				"content_position": "middle",
 				"structure": "30",
@@ -50,7 +50,7 @@
 			},
 			"elements": [
 				{
-					"id": "73389d02",
+					"id": "39fefe97",
 					"settings": {
 						"title": "WordPress",
 						"link": {
@@ -110,7 +110,7 @@
 					"elType": "widget"
 				},
 				{
-					"id": "85bd88c",
+					"id": "50dec849",
 					"settings": {
 						"elementskit_nav_menu": "menu",
 						"elementskit_main_menu_position": "elementskit-menu-po-center",
@@ -267,7 +267,7 @@
 					"elType": "widget"
 				},
 				{
-					"id": "5471a8fc",
+					"id": "5281d58c",
 					"settings": {
 						"text": "Basket (3)",
 						"typography_typography": "custom",
@@ -310,7 +310,7 @@
 			"elType": "container"
 		},
 		{
-			"id": "602e7967",
+			"id": "197f5863",
 			"settings": {
 				"flex_direction": "column",
 				"flex_justify_content": "center",
@@ -345,7 +345,7 @@
 			},
 			"elements": [
 				{
-					"id": "7f5cfd93",
+					"id": "4001f8b",
 					"settings": {
 						"ekit_heading_title": "We\u2019re {{farmers, purveyors, and eaters}} of <br> organically grown food.",
 						"ekit_heading_sub_title": "Time has changed",
@@ -408,7 +408,7 @@
 					"elType": "widget"
 				},
 				{
-					"id": "3acf283",
+					"id": "47d2179",
 					"settings": {
 						"text": "Browse our shop",
 						"typography_typography": "custom",
@@ -453,7 +453,7 @@
 			"elType": "container"
 		},
 		{
-			"id": "709626c0",
+			"id": "c111d31",
 			"settings": {
 				"flex_direction": "row",
 				"flex_align_items": "center",
@@ -470,7 +470,7 @@
 			},
 			"elements": [
 				{
-					"id": "6a4eea61",
+					"id": "6c14f661",
 					"settings": {
 						"content_width": "full",
 						"boxed_width": {
@@ -494,7 +494,7 @@
 					},
 					"elements": [
 						{
-							"id": "383410ba",
+							"id": "3b64d11a",
 							"settings": {
 								"image": {
 									"url": "http:\/\/localhost.loca\/wp-content\/uploads\/2026\/02\/jonathan-kemper-1HHrdIoLFpU-unsplash-1.png",
@@ -519,7 +519,7 @@
 					"elType": "container"
 				},
 				{
-					"id": "311d179c",
+					"id": "7c678118",
 					"settings": {
 						"content_width": "full",
 						"ekit_section_parallax_multi_items": [],
@@ -528,7 +528,7 @@
 					},
 					"elements": [
 						{
-							"id": "626e26ea",
+							"id": "4c4a7f21",
 							"settings": {
 								"image": {
 									"url": "http:\/\/localhost.loca\/wp-content\/uploads\/2026\/02\/Stocksy_txp226f62b2aNe300_Medium_4582193-1.png",
@@ -548,7 +548,7 @@
 							"elType": "widget"
 						},
 						{
-							"id": "5c67ce26",
+							"id": "7b90e152",
 							"settings": {
 								"editor": "<p>Central <strong>California<\/strong> \u2014 The person who grew these was located in Central California and, er, hopefully very well-compensated.<\/p>",
 								"typography_typography": "custom",
@@ -581,7 +581,7 @@
 			"elType": "container"
 		},
 		{
-			"id": "4e754313",
+			"id": "6ff3e405",
 			"settings": {
 				"flex_direction": "row",
 				"ekit_section_parallax_multi_items": [],
@@ -590,7 +590,7 @@
 			},
 			"elements": [
 				{
-					"id": "58d81e38",
+					"id": "7b11b6e3",
 					"settings": {
 						"content_width": "full",
 						"width": {
@@ -605,7 +605,7 @@
 					},
 					"elements": [
 						{
-							"id": "3aef1621",
+							"id": "6954e3ba",
 							"settings": {
 								"title": "WHAT WE BELIEVE",
 								"header_size": "span",
@@ -624,7 +624,7 @@
 					"elType": "container"
 				},
 				{
-					"id": "63d49fef",
+					"id": "4a90e73d",
 					"settings": {
 						"content_width": "full",
 						"ekit_section_parallax_multi_items": [],
@@ -633,7 +633,7 @@
 					},
 					"elements": [
 						{
-							"id": "3645ec3c",
+							"id": "32c6e2c2",
 							"settings": {
 								"editor": "<p>We believe in produce. Tasty produce. Produce like:<br \/><br \/>Apples. Oranges. Limes. Lemons. Guavas. Carrots. Cucumbers. Jicamas. Cauliflowers. Brussels sprouts. Shallots. Japanese eggplants. Asparagus. Artichokes\u2014Jerusalem artichokes, too. Radishes. Broccoli. Baby broccoli. Broccolini. Bok choy. Scallions. Ginger. Cherries. Raspberries. Cilantro. Parsley. Dill. <br \/><br \/>What are we forgetting?<br \/><br \/>Oh! Onions. Yams. Avocados. Lettuce. Arugula (to some, \u201crocket\u201d). Persian cucumbers, in addition to aforementioned \u201cnormal\u201d cucumbers. Artichokes. Zucchinis. Pumpkins. Squash (what some cultures call pumpkins). Sweet potatoes and potato-potatoes. Jackfruit. Monk fruit. Fruit of the Loom. Fruits of our labor (this website). Sorrel. Pineapple. Mango. Gooseberries. Blackberries. Tomatoes. Heirloom tomatoes. Beets. Chives. Corn. Endive. Escarole, which, we swear, we\u2019re vendors of organic produce, but if you asked us to describe what escaroles are...<\/p>",
 								"typography_typography": "custom",
@@ -687,6 +687,6 @@
 		"background_color": "#FFFFFF"
 	},
 	"version": "0.4",
-	"title": "Home Page #1",
+	"title": "Figma Kit",
 	"type": "page"
 }

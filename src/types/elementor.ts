@@ -7,14 +7,25 @@ export type FigmaNode = {
 	style?: {
 		fontSize?: number;
 		fontFamily?: string;
+		fontWeight?: number;
+		textAlignHorizontal?: string;
 	};
-	fills?: Array<{ type: string; color?: any }>;
+	fills?: Array<{
+		type: string;
+		color?: any;
+		imageRef?: string;
+		scaleMode?: string;
+	}>;
 	absoluteBoundingBox?: { width?: number; height?: number };
 	cornerRadius?: number;
 	paddingTop?: number;
 	paddingRight?: number;
 	paddingBottom?: number;
 	paddingLeft?: number;
+	layoutMode?: string;
+	primaryAxisAlignItems?: string;
+	counterAxisAlignItems?: string;
+	itemSpacing?: number;
 	children?: FigmaNode[];
 };
 
@@ -31,7 +42,7 @@ export type ElementorWidget = {
 // Elementor page structure
 export type ElementorPage = {
 	content: ElementorWidget[];
-	page_settings: any[];
+	page_settings: Record<string, any>;
 	version: string;
 	title: string;
 	type: string;

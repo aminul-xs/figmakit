@@ -1,0 +1,637 @@
+{
+  "content": [
+    {
+      "id": "3b7d0016",
+      "settings": {
+        "flex_direction": "column",
+        "flex_justify_content": "flex-start",
+        "flex_align_items": "flex-start",
+        "flex_gap": {
+          "size": 10,
+          "column": "10",
+          "row": "10",
+          "unit": "px",
+          "isLinked": true
+        },
+        "padding": {
+          "unit": "px",
+          "top": "20",
+          "right": "20",
+          "bottom": "20",
+          "left": "20",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#FFFFFF",
+        "border_radius": {
+          "unit": "px",
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0",
+          "isLinked": true
+        }
+      },
+      "elements": [
+        {
+          "id": "1cca0017",
+          "settings": {
+            "flex_direction": "column",
+            "flex_justify_content": "flex-start",
+            "flex_align_items": "flex-start",
+            "flex_gap": {
+              "size": 10,
+              "column": "10",
+              "row": "10",
+              "unit": "px",
+              "isLinked": true
+            },
+            "padding": {
+              "unit": "px",
+              "top": "20",
+              "right": "20",
+              "bottom": "20",
+              "left": "20",
+              "isLinked": false
+            },
+            "background_background": "classic",
+            "background_color": "#FFFFFF",
+            "border_radius": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            }
+          },
+          "elements": [
+            {
+              "id": "-6f79ffe8",
+              "settings": {
+                "title": "We believe in produce. Tasty produce. Produce like:\n\nApples. Oranges. Limes. Lemons. Guavas. Carrots. Cucumbers. Jicamas. Cauliflowers. Brussels sprouts. Shallots. Japanese eggplants. Asparagus. Artichokes—Jerusalem artichokes, too. Radishes. Broccoli. Baby broccoli. Broccolini. Bok choy. Scallions. Ginger. Cherries. Raspberries. Cilantro. Parsley. Dill. \n\nWhat are we forgetting?\n\nOh! Onions. Yams. Avocados. Lettuce. Arugula (to some, “rocket”). Persian cucumbers, in addition to aforementioned “normal” cucumbers. Artichokes. Zucchinis. Pumpkins. Squash (what some cultures call pumpkins). Sweet potatoes and potato-potatoes. Jackfruit. Monk fruit. Fruit of the Loom. Fruits of our labor (this website). Sorrel. Pineapple. Mango. Gooseberries. Blackberries. Tomatoes. Heirloom tomatoes. Beets. Chives. Corn. Endive. Escarole, which, we swear, we’re vendors of organic produce, but if you asked us to describe what escaroles are...",
+                "header_size": "h2",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 20,
+                  "sizes": []
+                },
+                "title_color": "#000000",
+                "typography_text_transform": "none",
+                "typography_text_decoration": "none",
+                "typography_font_style": "normal"
+              },
+              "elements": [],
+              "isInner": true,
+              "widgetType": "heading",
+              "elType": "widget"
+            },
+            {
+              "id": "4b200019",
+              "settings": {
+                "title": "WHAT WE BELIEVE",
+                "header_size": "h2",
+                "typography_typography": "custom",
+                "typography_font_family": "Inter",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "title_color": "#000000",
+                "typography_text_transform": "none",
+                "typography_text_decoration": "none",
+                "typography_font_style": "normal"
+              },
+              "elements": [],
+              "isInner": true,
+              "widgetType": "heading",
+              "elType": "widget"
+            }
+          ],
+          "isInner": true,
+          "elType": "container"
+        },
+        {
+          "id": "5e96001a",
+          "settings": {
+            "flex_direction": "column",
+            "flex_justify_content": "flex-start",
+            "flex_align_items": "flex-start",
+            "flex_gap": {
+              "size": 10,
+              "column": "10",
+              "row": "10",
+              "unit": "px",
+              "isLinked": true
+            },
+            "padding": {
+              "unit": "px",
+              "top": "20",
+              "right": "20",
+              "bottom": "20",
+              "left": "20",
+              "isLinked": false
+            },
+            "background_background": "classic",
+            "background_color": "#FFFFFF",
+            "border_radius": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            }
+          },
+          "elements": [
+            {
+              "id": "-3c31ffe5",
+              "settings": {
+                "flex_direction": "column",
+                "flex_justify_content": "flex-start",
+                "flex_align_items": "flex-start",
+                "flex_gap": {
+                  "size": 10,
+                  "column": "10",
+                  "row": "10",
+                  "unit": "px",
+                  "isLinked": true
+                },
+                "padding": {
+                  "unit": "px",
+                  "top": "20",
+                  "right": "20",
+                  "bottom": "20",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "background_background": "classic",
+                "background_color": "#FFFFFF",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                }
+              },
+              "elements": [],
+              "isInner": true,
+              "elType": "container"
+            },
+            {
+              "id": "7ee8001c",
+              "settings": {
+                "title": "Central California — The person who grew these was located in Central California and, er, hopefully very well-compensated.",
+                "header_size": "h2",
+                "typography_typography": "custom",
+                "typography_font_family": "Arial",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 14,
+                  "sizes": []
+                },
+                "title_color": "#000000",
+                "typography_text_transform": "none",
+                "typography_text_decoration": "none",
+                "typography_font_style": "normal"
+              },
+              "elements": [],
+              "isInner": true,
+              "widgetType": "heading",
+              "elType": "widget"
+            },
+            {
+              "id": "341b001d",
+              "settings": {
+                "flex_direction": "column",
+                "flex_justify_content": "flex-start",
+                "flex_align_items": "flex-start",
+                "flex_gap": {
+                  "size": 10,
+                  "column": "10",
+                  "row": "10",
+                  "unit": "px",
+                  "isLinked": true
+                },
+                "padding": {
+                  "unit": "px",
+                  "top": "20",
+                  "right": "20",
+                  "bottom": "20",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "background_background": "classic",
+                "background_color": "#FFFFFF",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                }
+              },
+              "elements": [],
+              "isInner": true,
+              "elType": "container"
+            }
+          ],
+          "isInner": true,
+          "elType": "container"
+        },
+        {
+          "id": "-6ba1ffe2",
+          "settings": {
+            "flex_direction": "column",
+            "flex_justify_content": "flex-start",
+            "flex_align_items": "flex-start",
+            "flex_gap": {
+              "size": 10,
+              "column": "10",
+              "row": "10",
+              "unit": "px",
+              "isLinked": true
+            },
+            "padding": {
+              "unit": "px",
+              "top": "20",
+              "right": "20",
+              "bottom": "20",
+              "left": "20",
+              "isLinked": false
+            },
+            "background_background": "classic",
+            "background_color": "#FFFFFF",
+            "border_radius": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            }
+          },
+          "elements": [
+            {
+              "id": "7563001f",
+              "settings": {
+                "title": "We’re farmers, purveyors, and eaters of organically grown food.",
+                "header_size": "h2",
+                "typography_typography": "custom",
+                "typography_font_family": "Arial",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 64,
+                  "sizes": []
+                },
+                "title_color": "#000000",
+                "typography_text_transform": "none",
+                "typography_text_decoration": "none",
+                "typography_font_style": "normal"
+              },
+              "elements": [],
+              "isInner": true,
+              "widgetType": "heading",
+              "elType": "widget"
+            },
+            {
+              "id": "-397cffe0",
+              "settings": {
+                "flex_direction": "column",
+                "flex_justify_content": "flex-start",
+                "flex_align_items": "flex-start",
+                "flex_gap": {
+                  "size": 10,
+                  "column": "10",
+                  "row": "10",
+                  "unit": "px",
+                  "isLinked": true
+                },
+                "padding": {
+                  "unit": "px",
+                  "top": "20",
+                  "right": "20",
+                  "bottom": "20",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "background_background": "classic",
+                "background_color": "#426B1F",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                }
+              },
+              "elements": [
+                {
+                  "id": "-5d2effdf",
+                  "settings": {
+                    "title": "Browse our shop",
+                    "header_size": "h2",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Inter",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 20,
+                      "sizes": []
+                    },
+                    "title_color": "#FFFFFF",
+                    "typography_text_transform": "none",
+                    "typography_text_decoration": "none",
+                    "typography_font_style": "normal"
+                  },
+                  "elements": [],
+                  "isInner": true,
+                  "widgetType": "heading",
+                  "elType": "widget"
+                }
+              ],
+              "isInner": true,
+              "elType": "container"
+            }
+          ],
+          "isInner": true,
+          "elType": "container"
+        },
+        {
+          "id": "-4ad4ffde",
+          "settings": {
+            "flex_direction": "column",
+            "flex_justify_content": "flex-start",
+            "flex_align_items": "flex-start",
+            "flex_gap": {
+              "size": 10,
+              "column": "10",
+              "row": "10",
+              "unit": "px",
+              "isLinked": true
+            },
+            "padding": {
+              "unit": "px",
+              "top": "20",
+              "right": "20",
+              "bottom": "20",
+              "left": "20",
+              "isLinked": false
+            },
+            "background_background": "classic",
+            "background_color": "#FFFFFF",
+            "border_radius": {
+              "unit": "px",
+              "top": "0",
+              "right": "0",
+              "bottom": "0",
+              "left": "0",
+              "isLinked": true
+            }
+          },
+          "elements": [
+            {
+              "id": "-4f25ffdd",
+              "settings": {
+                "title": "World Peas",
+                "header_size": "h2",
+                "typography_typography": "custom",
+                "typography_font_family": "Newsreader",
+                "typography_font_size": {
+                  "unit": "px",
+                  "size": 32,
+                  "sizes": []
+                },
+                "title_color": "#426B1F",
+                "typography_text_transform": "none",
+                "typography_text_decoration": "none",
+                "typography_font_style": "normal"
+              },
+              "elements": [],
+              "isInner": true,
+              "widgetType": "heading",
+              "elType": "widget"
+            },
+            {
+              "id": "-7810ffdc",
+              "settings": {
+                "flex_direction": "column",
+                "flex_justify_content": "flex-start",
+                "flex_align_items": "flex-start",
+                "flex_gap": {
+                  "size": 10,
+                  "column": "10",
+                  "row": "10",
+                  "unit": "px",
+                  "isLinked": true
+                },
+                "padding": {
+                  "unit": "px",
+                  "top": "20",
+                  "right": "20",
+                  "bottom": "20",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "background_background": "classic",
+                "background_color": "#FFFFFF",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                }
+              },
+              "elements": [
+                {
+                  "id": "-3771ffdb",
+                  "settings": {
+                    "title": "Shop",
+                    "header_size": "h2",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Inter",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 16,
+                      "sizes": []
+                    },
+                    "title_color": "#000000",
+                    "typography_text_transform": "none",
+                    "typography_text_decoration": "none",
+                    "typography_font_style": "normal"
+                  },
+                  "elements": [],
+                  "isInner": true,
+                  "widgetType": "heading",
+                  "elType": "widget"
+                },
+                {
+                  "id": "21e50026",
+                  "settings": {
+                    "title": "Newstand",
+                    "header_size": "h2",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Inter",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 16,
+                      "sizes": []
+                    },
+                    "title_color": "#000000",
+                    "typography_text_transform": "none",
+                    "typography_text_decoration": "none",
+                    "typography_font_style": "normal"
+                  },
+                  "elements": [],
+                  "isInner": true,
+                  "widgetType": "heading",
+                  "elType": "widget"
+                },
+                {
+                  "id": "-570cffd9",
+                  "settings": {
+                    "title": "Who we are",
+                    "header_size": "h2",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Inter",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 16,
+                      "sizes": []
+                    },
+                    "title_color": "#000000",
+                    "typography_text_transform": "none",
+                    "typography_text_decoration": "none",
+                    "typography_font_style": "normal"
+                  },
+                  "elements": [],
+                  "isInner": true,
+                  "widgetType": "heading",
+                  "elType": "widget"
+                },
+                {
+                  "id": "0a010028",
+                  "settings": {
+                    "title": "My profile",
+                    "header_size": "h2",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Inter",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 16,
+                      "sizes": []
+                    },
+                    "title_color": "#000000",
+                    "typography_text_transform": "none",
+                    "typography_text_decoration": "none",
+                    "typography_font_style": "normal"
+                  },
+                  "elements": [],
+                  "isInner": true,
+                  "widgetType": "heading",
+                  "elType": "widget"
+                }
+              ],
+              "isInner": true,
+              "elType": "container"
+            },
+            {
+              "id": "3d600029",
+              "settings": {
+                "flex_direction": "column",
+                "flex_justify_content": "flex-start",
+                "flex_align_items": "flex-start",
+                "flex_gap": {
+                  "size": 10,
+                  "column": "10",
+                  "row": "10",
+                  "unit": "px",
+                  "isLinked": true
+                },
+                "padding": {
+                  "unit": "px",
+                  "top": "20",
+                  "right": "20",
+                  "bottom": "20",
+                  "left": "20",
+                  "isLinked": false
+                },
+                "background_background": "classic",
+                "background_color": "#426B1F",
+                "border_radius": {
+                  "unit": "px",
+                  "top": "0",
+                  "right": "0",
+                  "bottom": "0",
+                  "left": "0",
+                  "isLinked": true
+                }
+              },
+              "elements": [
+                {
+                  "id": "-22bcffd6",
+                  "settings": {
+                    "title": "Basket (3)",
+                    "header_size": "h2",
+                    "typography_typography": "custom",
+                    "typography_font_family": "Inter",
+                    "typography_font_size": {
+                      "unit": "px",
+                      "size": 16,
+                      "sizes": []
+                    },
+                    "title_color": "#FFFFFF",
+                    "typography_text_transform": "none",
+                    "typography_text_decoration": "none",
+                    "typography_font_style": "normal"
+                  },
+                  "elements": [],
+                  "isInner": true,
+                  "widgetType": "heading",
+                  "elType": "widget"
+                }
+              ],
+              "isInner": true,
+              "elType": "container"
+            }
+          ],
+          "isInner": true,
+          "elType": "container"
+        }
+      ],
+      "isInner": false,
+      "elType": "container"
+    }
+  ],
+  "page_settings": {
+    "margin": {
+      "unit": "px",
+      "top": "0",
+      "right": "0",
+      "bottom": "0",
+      "left": "0",
+      "isLinked": false
+    },
+    "padding": {
+      "unit": "px",
+      "top": "0",
+      "right": "0",
+      "bottom": "0",
+      "left": "0",
+      "isLinked": false
+    },
+    "background_background": "classic",
+    "background_color": "#FFFFFF"
+  },
+  "version": "0.4",
+  "title": "FigmaKit Page",
+  "type": "page"
+}

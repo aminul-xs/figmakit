@@ -1,4 +1,3 @@
-
 import FigmaToElementor from './components/FigmaToElementor';
 
 export default function App() {
