@@ -12,7 +12,8 @@ figma.ui.onmessage = async (msg) => {
 		try {
 			// Get only selected nodes
 			const selection = figma.currentPage.selection;
-
+			console.log('selection:', selection);
+			
 			if (!selection || selection.length === 0) {
 				figma.ui.postMessage({
 					type: 'error',

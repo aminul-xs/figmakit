@@ -1,6 +1,11 @@
 // src/figma/serializer/serializeText.ts
 
-import { serializeBase } from "./serializeBase";
+import {
+  serializeBase,
+  serializeFills,
+  serializeStrokes,
+  serializeEffects,
+} from "../serializeBase";
 
 export function serializeTextNode(node: TextNode) {
   return {
@@ -31,20 +36,14 @@ export function serializeTextNode(node: TextNode) {
 
       // Text styles
       textStyleId: node.textStyleId,
-      fills: node.fills,
-      fillStyleId: node.fillStyleId,
-      strokes: node.strokes,
-      strokeStyleId: node.strokeStyleId,
-      strokeWeight: node.strokeWeight,
-      strokeAlign: node.strokeAlign,
+      ...serializeFills(node),
+      ...serializeStrokes(node),
 
       // Advanced text properties
       hyperlink: node.hyperlink,
       hasMissingFont: node.hasMissingFont,
     },
 
-    // Effects
-    effects: node.effects,
-    effectStyleId: node.effectStyleId,
+    ...serializeEffects(node),
   };
 }

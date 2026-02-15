@@ -86,3 +86,48 @@ export function serializeBase(node: SceneNode) {
 
   return base;
 }
+
+// Helper functions for common node properties
+
+export function serializeFills(node: any) {
+  return {
+    fills: node.fills,
+    fillStyleId: node.fillStyleId,
+  };
+}
+
+export function serializeStrokes(node: any) {
+  return {
+    strokes: node.strokes,
+    strokeStyleId: node.strokeStyleId,
+    strokeWeight: node.strokeWeight,
+    strokeAlign: node.strokeAlign,
+  };
+}
+
+export function serializeExtendedStrokes(node: any) {
+  return {
+    strokeCap: node.strokeCap,
+    strokeJoin: node.strokeJoin,
+    strokeMiterLimit: node.strokeMiterLimit,
+    dashPattern: node.dashPattern,
+  };
+}
+
+export function serializeEffects(node: any) {
+  return {
+    effects: node.effects,
+    effectStyleId: node.effectStyleId,
+  };
+}
+
+export function serializeCornerRadius(node: any) {
+  return {
+    cornerRadius: node.cornerRadius,
+    cornerSmoothing: node.cornerSmoothing,
+    topLeftRadius: node.topLeftRadius,
+    topRightRadius: node.topRightRadius,
+    bottomLeftRadius: node.bottomLeftRadius,
+    bottomRightRadius: node.bottomRightRadius,
+  };
+}

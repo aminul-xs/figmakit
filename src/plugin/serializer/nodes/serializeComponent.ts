@@ -1,7 +1,7 @@
 // src/figma/serializer/serializeComponent.ts
 
-import { serializeBase } from "./serializeBase";
-import { serializeChildren } from "./serializeChildren";
+import { serializeBase } from "../serializeBase";
+import { serializeChildren } from "../serializeChildren";
 
 export function serializeComponentNode(node: ComponentNode) {
   return {
