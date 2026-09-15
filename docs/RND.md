@@ -60,6 +60,7 @@ The implementation must prioritize official documentation and verified output fi
 - [Image API](https://developers.figma.com/docs/plugins/api/Image/)
 
 ### Elementor
+
 - [Elementor plugin GitHub repository](https://github.com/elementor/elementor)
 - [Elementor data structure](https://developers.elementor.com/docs/data-structure/)
 - [General element structure](https://developers.elementor.com/docs/data-structure/general-elements)
@@ -67,6 +68,7 @@ The implementation must prioritize official documentation and verified output fi
 - [Global style controls](https://developers.elementor.com/docs/editor-controls/global-style)
 
 ### WordPress/Gutenberg
+
 - [Gutenberg GitHub repository](https://github.com/wordpress/gutenberg)
 - [Block editor data flow and format](https://developer.wordpress.org/block-editor/explanations/architecture/data-flow/)
 - [Block serialization parser](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-serialization-default-parser/)
@@ -265,36 +267,36 @@ FigmaKit should parse once and export many times. A normalized Design Intermedia
 type Target = 'elementor' | 'gutenberg' | 'elementskit' | 'gutenkit';
 
 interface DesignDocument {
-  schemaVersion: '1';
-  source: SourceMetadata;
-  roots: DesignNode[];
-  tokens: DesignTokens;
-  assets: AssetReference[];
-  breakpoints: BreakpointSet;
-  diagnostics: Diagnostic[];
+	schemaVersion: '1';
+	source: SourceMetadata;
+	roots: DesignNode[];
+	tokens: DesignTokens;
+	assets: AssetReference[];
+	breakpoints: BreakpointSet;
+	diagnostics: Diagnostic[];
 }
 
 interface DesignNode {
-  id: string;
-  sourceNodeId: string;
-  sourceType: string;
-  semanticRole: SemanticRole;
-  name: string;
-  content?: NodeContent;
-  layout: LayoutStyle;
-  visual: VisualStyle;
-  typography?: TypographyStyle;
-  responsive?: ResponsiveOverrides;
-  component?: ComponentMetadata;
-  children: DesignNode[];
-  inference: InferenceMetadata;
+	id: string;
+	sourceNodeId: string;
+	sourceType: string;
+	semanticRole: SemanticRole;
+	name: string;
+	content?: NodeContent;
+	layout: LayoutStyle;
+	visual: VisualStyle;
+	typography?: TypographyStyle;
+	responsive?: ResponsiveOverrides;
+	component?: ComponentMetadata;
+	children: DesignNode[];
+	inference: InferenceMetadata;
 }
 
 interface InferenceMetadata {
-  source: 'explicit' | 'rule' | 'ai' | 'user';
-  confidence: number;
-  alternatives?: MappingCandidate[];
-  evidence: string[];
+	source: 'explicit' | 'rule' | 'ai' | 'user';
+	confidence: number;
+	alternatives?: MappingCandidate[];
+	evidence: string[];
 }
 ```
 
@@ -471,17 +473,17 @@ Text content may itself be sensitive. Provide a user-visible AI toggle and discl
 
 ```typescript
 interface AiMappingDecision {
-  contractVersion: '1';
-  sourceNodeId: string;
-  semanticRole: SemanticRole;
-  candidates: Array<{
-    target: Target;
-    component: string;
-    confidence: number;
-    evidenceCodes: string[];
-  }>;
-  responsiveIntent?: ResponsiveIntent;
-  warnings: DiagnosticCode[];
+	contractVersion: '1';
+	sourceNodeId: string;
+	semanticRole: SemanticRole;
+	candidates: Array<{
+		target: Target;
+		component: string;
+		confidence: number;
+		evidenceCodes: string[];
+	}>;
+	responsiveIntent?: ResponsiveIntent;
+	warnings: DiagnosticCode[];
 }
 ```
 
@@ -581,17 +583,17 @@ Select frame
 
 ### 10.4 M3 component mapping
 
-| Need | M3 pattern |
-| --- | --- |
-| Main conversion action | Filled button |
-| Alternative/export action | Tonal or outlined button |
-| Target selection | Selectable cards or segmented buttons |
-| AI on/off | Switch with supporting text |
-| Critical mapping choice | Dialog only when necessary |
-| Non-blocking warning | Inline banner/supporting text |
-| Status | Linear progress and status text |
-| Advanced settings | Expandable sections |
-| Short feedback | Snackbar |
+| Need                      | M3 pattern                            |
+| ------------------------- | ------------------------------------- |
+| Main conversion action    | Filled button                         |
+| Alternative/export action | Tonal or outlined button              |
+| Target selection          | Selectable cards or segmented buttons |
+| AI on/off                 | Switch with supporting text           |
+| Critical mapping choice   | Dialog only when necessary            |
+| Non-blocking warning      | Inline banner/supporting text         |
+| Status                    | Linear progress and status text       |
+| Advanced settings         | Expandable sections                   |
+| Short feedback            | Snackbar                              |
 
 ### 10.5 Design tokens
 

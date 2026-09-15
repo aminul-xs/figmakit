@@ -1,18 +1,21 @@
 import type { FigmaNode } from '@/core/figma';
 import type { ElementorElement, ElementorPage } from './types';
 import { defaultPageSettings, elementorConfig } from './config';
-import { convertFigmaFrameToContainer, convertMultipleFigmaNodes } from './converter';
+import { convertMultipleFigmaNodes } from './converter';
+import { createContainerWidget } from './widgets';
 
 export function buildElementorPage(
 	figmaNodes: FigmaNode | FigmaNode[],
 	pageTitle = 'FigmaKit Page'
 ): ElementorPage {
-	let content: ElementorElement[] = [];
-	if (Array.isArray(figmaNodes)) {
-		content = convertMultipleFigmaNodes(figmaNodes);
-	} else {
-		const root = convertFigmaFrameToContainer(figmaNodes);
-		if (root) content = [root];
+	const converted = convertMultipleFigmaNodes(
+		Array.isArray(figmaNodes) ? figmaNodes : [figmaNodes]
+	);
+	let content: ElementorElement[] = converted;
+	if (converted.some(({ elType }) => elType === 'widget')) {
+		const root = createContainerWidget({ content_width: 'full' });
+		root.elements = converted;
+		content = [root];
 	}
 	return {
 		content,
@@ -45,5 +48,8 @@ export function buildAndExportElementorPage(
 	pageTitle = 'FigmaKit Page',
 	pretty = true
 ): string {
-	return exportElementorPageAsJSON(buildElementorPage(figmaNodes, pageTitle), pretty);
+	return exportElementorPageAsJSON(
+		buildElementorPage(figmaNodes, pageTitle),
+		pretty
+	);
 }

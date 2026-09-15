@@ -12,11 +12,66 @@ export interface FigmaFill {
 	scaleMode?: string;
 }
 
+export interface FigmaEffect {
+	type: string;
+	visible?: boolean;
+	radius?: number;
+	offset?: { x: number; y: number };
+	spread?: number;
+	color?: FigmaColor & { a?: number };
+}
+
+export interface FigmaTextData {
+	characters: string;
+	fontSize?: number | symbol;
+	fontName?: { family: string; style: string } | symbol;
+	fontWeight?: number | symbol;
+	lineHeight?: { unit: string; value?: number } | symbol;
+	letterSpacing?: { unit: string; value: number } | symbol;
+	textAlignHorizontal?: string;
+	textCase?: string | symbol;
+	textDecoration?: string | symbol;
+	hyperlink?: { type: string; value?: string } | null | symbol;
+	fills?: FigmaFill[] | symbol;
+}
+
+export interface FigmaFrameData {
+	layoutMode?: string;
+	layoutWrap?: string;
+	primaryAxisSizingMode?: string;
+	counterAxisSizingMode?: string;
+	primaryAxisAlignItems?: string;
+	counterAxisAlignItems?: string;
+	paddingTop?: number;
+	paddingRight?: number;
+	paddingBottom?: number;
+	paddingLeft?: number;
+	itemSpacing?: number;
+	clipsContent?: boolean;
+	cornerRadius?: number | symbol;
+	topLeftRadius?: number;
+	topRightRadius?: number;
+	bottomRightRadius?: number;
+	bottomLeftRadius?: number;
+}
+
 export interface FigmaNode {
 	id: string;
 	type: string;
 	name?: string;
+	visible?: boolean;
+	locked?: boolean;
 	characters?: string;
+	text?: FigmaTextData;
+	frame?: FigmaFrameData;
+	rectangle?: Pick<
+		FigmaFrameData,
+		| 'cornerRadius'
+		| 'topLeftRadius'
+		| 'topRightRadius'
+		| 'bottomRightRadius'
+		| 'bottomLeftRadius'
+	>;
 	style?: {
 		fontSize?: number;
 		fontFamily?: string;
@@ -38,6 +93,8 @@ export interface FigmaNode {
 	strokes?: FigmaFill[];
 	strokeWeight?: number;
 	opacity?: number;
+	blendMode?: string;
+	effects?: FigmaEffect[];
 	absoluteBoundingBox?: { width?: number; height?: number };
 	width?: number;
 	height?: number;

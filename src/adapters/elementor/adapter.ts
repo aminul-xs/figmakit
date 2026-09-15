@@ -7,26 +7,55 @@ import type {
 import type { FigmaNode } from '@/core/figma';
 import type { ElementorPage } from './types';
 import { buildElementorPage } from './pageBuilder';
+import { validateElementorPage } from './validation';
 
 export interface ElementorConversionInput {
 	nodes: FigmaNode | FigmaNode[];
 	pageTitle?: string;
 }
 
-export class ElementorAdapter
-	implements TargetAdapter<ElementorConversionInput, ElementorPage>
-{
+export class ElementorAdapter implements TargetAdapter<
+	ElementorConversionInput,
+	ElementorPage
+> {
 	readonly target = 'elementor' as const;
 
 	preflight(input: ElementorConversionInput): ConversionDiagnostic[] {
 		const nodes = Array.isArray(input.nodes) ? input.nodes : [input.nodes];
-		return nodes.length
-			? []
-			: [{
-				code: 'elementor.empty-selection',
-				message: 'Select at least one Figma node to convert.',
-				severity: 'error',
-			}];
+		if (!nodes.length) {
+			return [
+				{
+					code: 'elementor.empty-selection',
+					message: 'Select at least one Figma node to convert.',
+					severity: 'error',
+				},
+			];
+		}
+
+		const diagnostics: ConversionDiagnostic[] = [];
+		const visit = (node: FigmaNode) => {
+			const supported = ['FRAME', 'GROUP', 'TEXT', 'RECTANGLE', 'IMAGE'];
+			if (!supported.includes(node.type)) {
+				diagnostics.push({
+					code: 'elementor.unsupported-node',
+					message: `${node.type} node "${node.name ?? node.id}" is not mapped yet.`,
+					severity: 'warning',
+					sourceNodeId: node.id,
+				});
+			}
+			const imageFill = node.fills?.find(({ type }) => type === 'IMAGE');
+			if (imageFill && !imageFill.imageRef && !imageFill.imageHash) {
+				diagnostics.push({
+					code: 'elementor.image-reference-missing',
+					message: `Image "${node.name ?? node.id}" has no serialized asset reference.`,
+					severity: 'error',
+					sourceNodeId: node.id,
+				});
+			}
+			for (const child of node.children ?? []) visit(child);
+		};
+		for (const node of nodes) visit(node);
+		return diagnostics;
 	}
 
 	transform(input: ElementorConversionInput): ElementorPage {
@@ -34,29 +63,13 @@ export class ElementorAdapter
 	}
 
 	validate(output: ElementorPage): ValidationResult {
-		const diagnostics: ConversionDiagnostic[] = [];
-		if (output.version !== '0.4') {
-			diagnostics.push({
-				code: 'elementor.unsupported-version',
-				message: `Unsupported Elementor template version: ${output.version}`,
-				severity: 'error',
-			});
-		}
-		if (!Array.isArray(output.content)) {
-			diagnostics.push({
-				code: 'elementor.invalid-content',
-				message: 'Elementor template content must be an array.',
-				severity: 'error',
-			});
-		}
-		return {
-			valid: !diagnostics.some(({ severity }) => severity === 'error'),
-			diagnostics,
-		};
+		return validateElementorPage(output);
 	}
 
 	package(output: ElementorPage): ExportArtifact {
-		const safeTitle = output.title.trim().toLowerCase()
+		const safeTitle = output.title
+			.trim()
+			.toLowerCase()
 			.replace(/[^a-z0-9]+/g, '-')
 			.replace(/^-|-$/g, '');
 		return {

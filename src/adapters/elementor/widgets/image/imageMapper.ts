@@ -1,31 +1,64 @@
 import type { FigmaNode } from '@/core/figma';
-import { rgbToHex } from '@/utils';
 import type { ImageWidgetSettings } from '../../types';
+import {
+	box,
+	dimension,
+	firstSolidColor,
+	nodeHeight,
+	nodeRadius,
+	nodeWidth,
+} from '../mappingUtils';
+
+const objectFitMap: Record<string, string> = {
+	FILL: 'cover',
+	FIT: 'contain',
+	CROP: 'cover',
+	TILE: 'fill',
+};
 
 export function mapFigmaImageToImage(
 	node: FigmaNode
 ): Partial<ImageWidgetSettings> {
-	const settings: Partial<ImageWidgetSettings> = { image_size: 'full' };
+	const settings: Partial<ImageWidgetSettings> = {
+		image_size: 'full',
+		align: 'start',
+	};
 	const image = node.fills?.find((fill) => fill.type === 'IMAGE');
 	if (image) {
 		settings.image = {
-			url: image.imageRef ?? (image.imageHash ? `figma://image/${image.imageHash}` : ''),
-			id: node.id,
+			url:
+				image.imageRef ??
+				(image.imageHash ? `figma://image/${image.imageHash}` : ''),
+			id: '',
 		};
-		settings.object_fit = ({ FILL: 'cover', FIT: 'contain', CROP: 'cover', TILE: 'none' } as Record<string, string>)[image.scaleMode ?? ''] ?? 'cover';
+		settings['object-fit'] = objectFitMap[image.scaleMode ?? ''] ?? '';
+		settings['object-position'] = 'center center';
 	}
-	const width = node.absoluteBoundingBox?.width ?? node.width;
-	const height = node.absoluteBoundingBox?.height ?? node.height;
-	if (width) settings.width = { unit: 'px', size: Math.round(width), sizes: [] };
-	if (height) settings.height = { unit: 'px', size: Math.round(height), sizes: [] };
-	if (node.cornerRadius) {
-		const value = String(Math.round(node.cornerRadius));
-		settings.border_radius = { unit: 'px', top: value, right: value, bottom: value, left: value, isLinked: true };
+
+	const width = nodeWidth(node);
+	const height = nodeHeight(node);
+	if (width) {
+		settings.width = dimension(Math.round(width));
+		settings.space = dimension(Math.round(width));
 	}
-	const stroke = node.strokes?.find((candidate) => candidate.type === 'SOLID' && candidate.color);
-	if (stroke?.color && node.strokeWeight) {
+	if (height) settings.height = dimension(Math.round(height));
+
+	const radius = nodeRadius(node);
+	if (radius) settings.image_border_radius = radius;
+
+	const borderColor = firstSolidColor(node.strokes);
+	if (borderColor && node.strokeWeight) {
 		settings.border_border = 'solid';
-		settings.border_color = rgbToHex(stroke.color);
+		settings.border_width = box(
+			node.strokeWeight,
+			node.strokeWeight,
+			node.strokeWeight,
+			node.strokeWeight
+		);
+		settings.border_color = borderColor;
+	}
+	if (node.opacity !== undefined && node.opacity < 1) {
+		settings.opacity = dimension(node.opacity, '');
 	}
 	return settings;
 }

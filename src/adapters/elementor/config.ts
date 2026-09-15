@@ -21,7 +21,7 @@ export function shouldConvertNode(figmaNode: {
 	if (figmaNode.type in nodeToElementorMap) return true;
 	return Boolean(
 		figmaNode.type === 'RECTANGLE' &&
-			figmaNode.fills?.some((fill) => fill.type === 'IMAGE')
+		figmaNode.fills?.some((fill) => fill.type === 'IMAGE')
 	);
 }
 
@@ -38,10 +38,20 @@ export function isContainerNode(figmaNode: {
 
 export const defaultPageSettings = {
 	margin: {
-		unit: 'px', top: '0', right: '0', bottom: '0', left: '0', isLinked: false,
+		unit: 'px',
+		top: '0',
+		right: '0',
+		bottom: '0',
+		left: '0',
+		isLinked: false,
 	},
 	padding: {
-		unit: 'px', top: '0', right: '0', bottom: '0', left: '0', isLinked: false,
+		unit: 'px',
+		top: '0',
+		right: '0',
+		bottom: '0',
+		left: '0',
+		isLinked: false,
 	},
 	background_background: 'classic',
 	background_color: '#FFFFFF',

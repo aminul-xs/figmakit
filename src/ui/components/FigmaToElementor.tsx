@@ -62,7 +62,7 @@ export default function FigmaToElementor() {
 		window.onmessage = (event) => {
 			const msg = event.data.pluginMessage;
 			console.log('msg', msg);
-			
+
 			if (msg?.type === 'figma-nodes-data') {
 				try {
 					// Convert Figma nodes to Elementor page

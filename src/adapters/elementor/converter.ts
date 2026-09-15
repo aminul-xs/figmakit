@@ -17,7 +17,10 @@ export function convertFigmaToElementor(
 	if (!widget) return null;
 
 	if (isContainerNode(figmaNode) && figmaNode.children?.length) {
-		widget.elements = convertMultipleFigmaNodes(figmaNode.children, depth + 1);
+		widget.elements = convertMultipleFigmaNodes(
+			figmaNode.children,
+			depth + 1
+		);
 	}
 	return widget;
 }

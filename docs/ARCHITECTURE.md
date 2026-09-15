@@ -66,7 +66,16 @@ src/
       pageBuilder.ts
       types.ts
       widgetFactory.ts
-    gutenberg/             # planned
+    gutenberg/
+      blocks/
+        columns/
+        column/
+        image/
+        paragraph/
+      adapter.ts
+      converter.ts
+      serializer.ts
+      validation.ts
     elementskit/           # planned
     gutenkit/              # planned
   ai/                      # planned
@@ -108,11 +117,11 @@ Every output target implements:
 
 ```typescript
 interface TargetAdapter<TInput, TOutput> {
-  readonly target: ConversionTarget;
-  preflight(input: TInput): ConversionDiagnostic[];
-  transform(input: TInput): TOutput;
-  validate(output: TOutput): ValidationResult;
-  package(output: TOutput): ExportArtifact;
+	readonly target: ConversionTarget;
+	preflight(input: TInput): ConversionDiagnostic[];
+	transform(input: TInput): TOutput;
+	validate(output: TOutput): ValidationResult;
+	package(output: TOutput): ExportArtifact;
 }
 ```
 
@@ -173,20 +182,34 @@ typed Figma nodes
 
 ### Current support
 
-- Container
-- Heading
-- Image-fill geometry → Image widget
+- Container: Auto Layout direction/wrap/alignment/gap, padding, size, background, border, radius, shadow, clipping, and nested elements
+- Heading: content, inferred HTML tag, font family/size/weight/style, alignment, color, case, decoration, line height, letter spacing, hyperlink, and blend mode
+- Image-fill geometry → Image widget: media reference, size/max-width, height, object fit/position, border, radius, and opacity
 - Nested conversion
 - Elementor template version `0.4`
-- Basic preflight, validation, and JSON packaging
+- Preflight diagnostics, recursive structural validation, and JSON packaging
 
 ### Known limitations
 
-- All text still maps to Heading; semantic text classification is pending.
-- Image references are placeholders until asset extraction/upload exists.
-- Only a small subset of Elementor settings is mapped.
+- All text still maps to Heading; semantic paragraph classification is pending.
+- Image references identify Figma assets, but final WordPress media upload and URL replacement require the planned connector.
+- Responsive breakpoint synthesis and global style binding are pending.
 - Real WordPress import/edit/save/reload compatibility tests are pending.
 - Element IDs are unique but not yet deterministic from source IDs.
+
+## Gutenberg adapter
+
+The initial Gutenberg base adapter owns four block folders matching the official block names. Horizontal Figma Auto Layout becomes `core/columns`; every direct child is wrapped in `core/column`. Text becomes `core/paragraph`, and image fills become `core/image`. Vertical and non-layout wrappers are flattened until Group support is added, preventing invalid orphan Column blocks.
+
+```text
+typed Figma nodes
+  → deterministic block selection
+  → Columns/Column/Image/Paragraph mappers
+  → validated Gutenberg block tree
+  → canonical comment-delimited post_content
+```
+
+The adapter separates full editor attributes from comment-serialized attributes so HTML-sourced values such as paragraph content and image URL/alt are not redundantly written into block comments. Real WordPress parser and edit/save/reload fixtures remain a release gate.
 
 ## Future adapter relationships
 

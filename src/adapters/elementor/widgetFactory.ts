@@ -20,9 +20,17 @@ export function createWidgetFromFigmaNode(
 
 	switch (widgetType) {
 		case 'heading':
-			return createHeadingWidget(figmaNode.characters || 'Heading', settings, depth);
+			return createHeadingWidget(
+				figmaNode.text?.characters ?? figmaNode.characters ?? 'Heading',
+				settings,
+				depth
+			);
 		case 'image':
-			return createImageWidget(extractImageUrl(figmaNode), settings, depth);
+			return createImageWidget(
+				extractImageUrl(figmaNode),
+				settings,
+				depth
+			);
 		case 'container':
 			return createContainerWidget(settings, depth);
 		default:

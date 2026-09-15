@@ -103,12 +103,12 @@ Blocking conditions:
 
 Show four selectable M3 cards:
 
-| Target | Description | Dependency |
-| --- | --- | --- |
-| Elementor | Native Elementor containers and widgets | Elementor |
-| Gutenberg | Native WordPress core blocks | WordPress Block Editor |
+| Target      | Description                                 | Dependency              |
+| ----------- | ------------------------------------------- | ----------------------- |
+| Elementor   | Native Elementor containers and widgets     | Elementor               |
+| Gutenberg   | Native WordPress core blocks                | WordPress Block Editor  |
 | ElementsKit | Elementor plus verified ElementsKit widgets | Elementor + ElementsKit |
-| GutenKit | Gutenberg plus verified GutenKit blocks | WordPress + GutenKit |
+| GutenKit    | Gutenberg plus verified GutenKit blocks     | WordPress + GutenKit    |
 
 Each card shows:
 
@@ -193,12 +193,12 @@ The system must never silently remove an unsupported property.
 
 Show only mappings that need attention by default. The user can expand “All mappings.”
 
-| Figma component | Proposed output | Status |
-| --- | --- | --- |
-| Hero title | Elementor Heading | Confident |
-| CTA component | Elementor Button | Confident |
-| Pricing card | ElementsKit Pricing Table | Review recommended |
-| FAQ group | ElementsKit Accordion | Confident |
+| Figma component | Proposed output           | Status             |
+| --------------- | ------------------------- | ------------------ |
+| Hero title      | Elementor Heading         | Confident          |
+| CTA component   | Elementor Button          | Confident          |
+| Pricing card    | ElementsKit Pricing Table | Review recommended |
+| FAQ group       | ElementsKit Accordion     | Confident          |
 
 Selecting a row shows:
 
@@ -513,20 +513,20 @@ Examples:
 
 ## 13. Material Design 3 patterns
 
-| Requirement | M3 pattern |
-| --- | --- |
-| Primary next/publish action | Filled button |
-| Secondary action | Tonal button |
-| Download/alternative | Outlined button |
-| Target selection | Selectable cards |
-| AI and option switches | Switch with supporting text |
-| Step navigation | Compact stepper/progress header |
-| Compatibility result | Status list with icons and text |
-| Warnings | Inline banner |
-| Destructive replacement | Confirmation dialog/page |
-| Processing | Linear progress indicator |
-| Short feedback | Snackbar |
-| Advanced settings | Expandable sections |
+| Requirement                 | M3 pattern                      |
+| --------------------------- | ------------------------------- |
+| Primary next/publish action | Filled button                   |
+| Secondary action            | Tonal button                    |
+| Download/alternative        | Outlined button                 |
+| Target selection            | Selectable cards                |
+| AI and option switches      | Switch with supporting text     |
+| Step navigation             | Compact stepper/progress header |
+| Compatibility result        | Status list with icons and text |
+| Warnings                    | Inline banner                   |
+| Destructive replacement     | Confirmation dialog/page        |
+| Processing                  | Linear progress indicator       |
+| Short feedback              | Snackbar                        |
+| Advanced settings           | Expandable sections             |
 
 Use semantic design tokens for color, typography, shape, spacing, elevation, focus, selected, disabled, error, warning, and success states. Do not communicate status through color alone.
 

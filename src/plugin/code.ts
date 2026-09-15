@@ -1,7 +1,7 @@
 // This code runs in Figma's plugin sandbox
 // It has access to the Figma API but no browser/DOM APIs
 
-import { serializeNode } from "./serializer";
+import { serializeNode } from './serializer';
 
 figma.showUI(__html__, { width: 400, height: 600 });
 
@@ -13,7 +13,7 @@ figma.ui.onmessage = async (msg) => {
 			// Get only selected nodes
 			const selection = figma.currentPage.selection;
 			console.log('selection:', selection);
-			
+
 			if (!selection || selection.length === 0) {
 				figma.ui.postMessage({
 					type: 'error',
@@ -22,10 +22,10 @@ figma.ui.onmessage = async (msg) => {
 				});
 				return;
 			}
-			
+
 			const nodes = selection.map((node) => serializeNode(node));
 			console.log('nodes serialized in UI #2:', selection);
-			
+
 			// Send back to UI
 			figma.ui.postMessage({
 				type: 'figma-nodes-data',

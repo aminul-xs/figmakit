@@ -1,22 +1,22 @@
 import {
-  serializeBase,
-  serializeFills,
-  serializeEffects,
-} from "../serializeBase";
-import { serializeChildren } from "../serializeChildren";
+	serializeBase,
+	serializeFills,
+	serializeEffects,
+} from '../serializeBase';
+import { serializeChildren } from '../serializeChildren';
 
 export function serializeBooleanOperationNode(node: BooleanOperationNode) {
-  return {
-    ...serializeBase(node),
+	return {
+		...serializeBase(node),
 
-    booleanOperation: {
-      booleanOperation: node.booleanOperation,
-    },
+		booleanOperation: {
+			booleanOperation: node.booleanOperation,
+		},
 
-    ...serializeFills(node),
-    strokes: node.strokes,
-    ...serializeEffects(node),
+		...serializeFills(node),
+		strokes: node.strokes,
+		...serializeEffects(node),
 
-    children: serializeChildren(node),
-  };
+		children: serializeChildren(node),
+	};
 }

@@ -9,7 +9,7 @@ The initial launch targets are:
 3. Figma → ElementsKit
 4. Figma → GutenKit
 
-> **Project status:** early development. The repository currently contains a working Figma node serializer and a basic Elementor JSON builder for containers, headings, and images. Gutenberg, ElementsKit, GutenKit, AI services, WordPress delivery, and production validation are planned but not complete.
+> **Project status:** early development. The repository contains a working Figma node serializer, Elementor container/heading/image support, and a Gutenberg adapter for Columns, Column, Image, and Paragraph. ElementsKit, GutenKit, AI services, WordPress delivery, and production compatibility validation remain planned.
 
 ## Product vision
 
@@ -27,12 +27,12 @@ The complete user journey, website connection, direct import, live publishing, v
 
 ### Supported output targets
 
-| Target | Output | Required WordPress dependency | Launch priority |
-| --- | --- | --- | --- |
-| Elementor | Importable Elementor template JSON | Elementor | P0 |
-| Gutenberg | Valid serialized core-block markup | WordPress Block Editor | P0 |
-| ElementsKit | Elementor JSON using supported ElementsKit widgets | Elementor + ElementsKit | P1 |
-| GutenKit | Serialized markup using supported GutenKit blocks | WordPress + GutenKit | P1 |
+| Target      | Output                                             | Required WordPress dependency | Launch priority |
+| ----------- | -------------------------------------------------- | ----------------------------- | --------------- |
+| Elementor   | Importable Elementor template JSON                 | Elementor                     | P0              |
+| Gutenberg   | Valid serialized core-block markup                 | WordPress Block Editor        | P0              |
+| ElementsKit | Elementor JSON using supported ElementsKit widgets | Elementor + ElementsKit       | P1              |
+| GutenKit    | Serialized markup using supported GutenKit blocks  | WordPress + GutenKit          | P1              |
 
 ### MVP Figma inputs
 
@@ -46,16 +46,16 @@ The complete user journey, website connection, direct import, live publishing, v
 
 ### MVP native mappings
 
-| Design intent | Elementor | Gutenberg | ElementsKit | GutenKit |
-| --- | --- | --- | --- | --- |
-| Layout wrapper | Container | Group/Columns | Elementor Container | GutenKit Container |
-| Heading | Heading | Heading | ElementsKit Heading when useful | GutenKit Heading |
-| Paragraph | Text Editor | Paragraph | Native Elementor fallback | Advanced Paragraph |
-| Image | Image | Image | ElementsKit Image/appropriate fallback | Advanced Image |
-| Button | Button | Buttons/Button | ElementsKit Button | GutenKit Button |
-| Icon + content card | Container composition | Group composition | Icon Box | Icon Box |
-| Accordion/FAQ | Accordion or nested fallback | Details blocks/fallback | ElementsKit Accordion/FAQ | GutenKit Advanced Accordion/FAQ |
-| Tabs | Tabs when available/fallback | Core-compatible fallback | ElementsKit Advanced Tab | GutenKit Advanced Tab |
+| Design intent       | Elementor                    | Gutenberg                | ElementsKit                            | GutenKit                        |
+| ------------------- | ---------------------------- | ------------------------ | -------------------------------------- | ------------------------------- |
+| Layout wrapper      | Container                    | Group/Columns            | Elementor Container                    | GutenKit Container              |
+| Heading             | Heading                      | Heading                  | ElementsKit Heading when useful        | GutenKit Heading                |
+| Paragraph           | Text Editor                  | Paragraph                | Native Elementor fallback              | Advanced Paragraph              |
+| Image               | Image                        | Image                    | ElementsKit Image/appropriate fallback | Advanced Image                  |
+| Button              | Button                       | Buttons/Button           | ElementsKit Button                     | GutenKit Button                 |
+| Icon + content card | Container composition        | Group composition        | Icon Box                               | Icon Box                        |
+| Accordion/FAQ       | Accordion or nested fallback | Details blocks/fallback  | ElementsKit Accordion/FAQ              | GutenKit Advanced Accordion/FAQ |
+| Tabs                | Tabs when available/fallback | Core-compatible fallback | ElementsKit Advanced Tab               | GutenKit Advanced Tab           |
 
 The first release should prefer a reliable core element over an uncertain addon mapping. A conversion must never silently invent an unsupported widget.
 
@@ -84,15 +84,15 @@ FigmaKit's strongest defensible position is its first-party understanding of the
 
 ### Main product risks
 
-| Risk | Impact | Mitigation |
-| --- | --- | --- |
-| Visual layers do not reveal semantic intent | Wrong widget selection | Rules, optional naming hints, AI confidence, review UI |
-| Figma and WordPress layout engines differ | Visual drift | Auto Layout-first mapping, breakpoint rules, screenshot QA |
-| Addon widget schemas change | Broken imports | Versioned adapters and fixtures from real exports |
-| Gutenberg markup and attributes disagree | Invalid-block errors | Known schemas and parser round-trip tests |
-| AI output is inconsistent | Unreliable conversion | Typed AI decisions; deterministic final exporters |
-| Fonts and remote images are unavailable | Missing assets/layout shift | Preflight report, media pipeline, fallback warnings |
-| Very large selections exceed limits | Failed conversion | Incremental serialization, limits, progress, server jobs |
+| Risk                                        | Impact                      | Mitigation                                                 |
+| ------------------------------------------- | --------------------------- | ---------------------------------------------------------- |
+| Visual layers do not reveal semantic intent | Wrong widget selection      | Rules, optional naming hints, AI confidence, review UI     |
+| Figma and WordPress layout engines differ   | Visual drift                | Auto Layout-first mapping, breakpoint rules, screenshot QA |
+| Addon widget schemas change                 | Broken imports              | Versioned adapters and fixtures from real exports          |
+| Gutenberg markup and attributes disagree    | Invalid-block errors        | Known schemas and parser round-trip tests                  |
+| AI output is inconsistent                   | Unreliable conversion       | Typed AI decisions; deterministic final exporters          |
+| Fonts and remote images are unavailable     | Missing assets/layout shift | Preflight report, media pipeline, fallback warnings        |
+| Very large selections exceed limits         | Failed conversion           | Incremental serialization, limits, progress, server jobs   |
 
 ## Proposed architecture
 
@@ -131,19 +131,30 @@ Elementor's `WidgetBase` should not remain the shared internal model. Introduce 
 
 ```typescript
 type DesignNode = {
-  id: string;
-  sourceNodeId: string;
-  kind: 'page' | 'section' | 'container' | 'heading' | 'text' |
-        'image' | 'button' | 'icon' | 'list' | 'card' |
-        'accordion' | 'tabs' | 'unknown';
-  name?: string;
-  content?: unknown;
-  layout: LayoutStyle;
-  visual: VisualStyle;
-  responsive?: ResponsiveOverrides;
-  children: DesignNode[];
-  mappingHint?: MappingHint;
-  confidence?: number;
+	id: string;
+	sourceNodeId: string;
+	kind:
+		| 'page'
+		| 'section'
+		| 'container'
+		| 'heading'
+		| 'text'
+		| 'image'
+		| 'button'
+		| 'icon'
+		| 'list'
+		| 'card'
+		| 'accordion'
+		| 'tabs'
+		| 'unknown';
+	name?: string;
+	content?: unknown;
+	layout: LayoutStyle;
+	visual: VisualStyle;
+	responsive?: ResponsiveOverrides;
+	children: DesignNode[];
+	mappingHint?: MappingHint;
+	confidence?: number;
 };
 ```
 
@@ -155,11 +166,11 @@ Each adapter should expose the same interface:
 
 ```typescript
 interface TargetAdapter<TOutput> {
-  target: 'elementor' | 'gutenberg' | 'elementskit' | 'gutenkit';
-  preflight(document: DesignDocument): Diagnostic[];
-  transform(document: DesignDocument): TOutput;
-  validate(output: TOutput): ValidationResult;
-  package(output: TOutput): ExportArtifact;
+	target: 'elementor' | 'gutenberg' | 'elementskit' | 'gutenkit';
+	preflight(document: DesignDocument): Diagnostic[];
+	transform(document: DesignDocument): TOutput;
+	validate(output: TOutput): ValidationResult;
+	package(output: TOutput): ExportArtifact;
 }
 ```
 
@@ -215,17 +226,17 @@ AI is an assistant to the conversion engine, not the source of truth.
 
 ```json
 {
-  "sourceNodeId": "123:456",
-  "semanticRole": "pricing-card",
-  "targetComponent": "elementskit/pricing-table",
-  "confidence": 0.91,
-  "fallback": "elementor/container-composition",
-  "responsiveIntent": {
-    "desktop": "row",
-    "tablet": "two-column",
-    "mobile": "stack"
-  },
-  "warnings": []
+	"sourceNodeId": "123:456",
+	"semanticRole": "pricing-card",
+	"targetComponent": "elementskit/pricing-table",
+	"confidence": 0.91,
+	"fallback": "elementor/container-composition",
+	"responsiveIntent": {
+		"desktop": "row",
+		"tablet": "two-column",
+		"mobile": "stack"
+	},
+	"warnings": []
 }
 ```
 
@@ -389,7 +400,16 @@ src/
       pageBuilder.ts        # Elementor template assembly
       config.ts             # Version and mapping configuration
       types.ts              # Elementor-only contracts
-    gutenberg/              # Planned target adapter
+    gutenberg/
+      blocks/
+        columns/            # Core Columns factory and mapper
+        column/             # Core Column factory and mapper
+        image/              # Core Image factory and mapper
+        paragraph/          # Core Paragraph factory and mapper
+      adapter.ts            # TargetAdapter implementation
+      converter.ts          # Recursive Figma-to-block conversion
+      serializer.ts         # Comment-delimited post_content markup
+      validation.ts         # Block-tree contract validation
     elementskit/            # Planned target adapter
     gutenkit/               # Planned target adapter
   ai/                       # Planned AI contracts, client, and policy
@@ -406,7 +426,7 @@ docs/
 - [ ] Create target-neutral Design IR types.
 - [x] Move the current Elementor builder behind `TargetAdapter`.
 - [ ] Add text-editor and button support to Elementor.
-- [ ] Add the first Gutenberg group/heading/paragraph/image serializer.
+- [x] Add Gutenberg Columns, Column, Image, and Paragraph serialization.
 - [ ] Collect real ElementsKit and GutenKit export fixtures.
 - [ ] Add fixture version metadata and compatibility tests.
 - [ ] Add Vitest or an equivalent TypeScript test runner.
@@ -453,9 +473,10 @@ Production artifacts are written to `dist/`.
 ## Current limitations
 
 - The current adapter still consumes raw Figma nodes; a target-neutral Design IR is the next migration step.
-- Only basic Elementor container, heading, and image output is implemented.
+- Elementor container, heading, and image mappings are implemented against the official source controls; real WordPress compatibility fixtures are still required.
 - Text nodes currently map to headings; paragraph semantics are not implemented.
-- ElementsKit, Gutenberg, and GutenKit adapters do not exist yet.
+- ElementsKit and GutenKit adapters do not exist yet; Gutenberg currently supports Columns, Column, Image, and Paragraph.
+- Gutenberg output still needs parser round-trip and real WordPress edit/save/reload fixtures before production claims.
 - There is no AI backend or AI contract.
 - There is no WordPress connector, asset pipeline, schema validation, automated test suite, or visual comparison.
 - Output must not be called production-ready until real import and edit/reload tests pass.

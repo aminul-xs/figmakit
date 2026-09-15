@@ -16,12 +16,11 @@
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
 		"typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
-		
-		/* One stable root alias; domain ownership is expressed by folders. */
-		"baseUrl": ".",
+
+		/* One stable root alias; TypeScript 7 resolves paths relative to this file. */
 		"paths": {
-			"@/*": ["src/*"]
+			"@/*": ["./src/*"]
 		}
 	},
-	"include": ["src"]
+	"include": ["src", "node_modules/@figma/plugin-typings/index.d.ts"]
 }
