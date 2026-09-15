@@ -1,5 +1,5 @@
 import type { FigmaNode } from '@/core/figma';
-import { escapeHtml, styleString } from '../../blockUtils';
+import { richTextHtml, styleString } from '../../blockUtils';
 import type { GutenbergBlock } from '../../types';
 import { mapFigmaParagraph } from './paragraphMapper';
 
@@ -21,7 +21,7 @@ export function createParagraphBlock(node: FigmaNode): GutenbergBlock {
 				typeof mapping.attributes.align === 'string'
 					? ` has-text-align-${mapping.attributes.align}`
 					: '';
-			return `<p${align ? ` class="${align.trim()}"` : ''}${style ? ` style="${style}"` : ''}>${escapeHtml(mapping.content).replace(/\n/g, '<br>')}</p>`;
+			return `<p${align ? ` class="${align.trim()}"` : ''}${style ? ` style="${style}"` : ''}>${richTextHtml(node).replace(/\n/g, '<br>')}</p>`;
 		},
 	};
 }

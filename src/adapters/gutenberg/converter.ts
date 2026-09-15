@@ -3,6 +3,9 @@ import { nodeWidth } from './blockUtils';
 import {
 	createColumnBlock,
 	createColumnsBlock,
+	createButtonsBlock,
+	createGroupBlock,
+	createHeadingBlock,
 	createImageBlock,
 	createParagraphBlock,
 } from './blocks';
@@ -21,7 +24,22 @@ function isHorizontal(node: FigmaNode): boolean {
 
 export function convertFigmaNodeToGutenberg(node: FigmaNode): GutenbergBlock[] {
 	if (node.visible === false) return [];
-	if (node.type === 'TEXT') return [createParagraphBlock(node)];
+	if (
+		/(button|btn|cta|browse|shop)/i.test(node.name ?? '') &&
+		node.children?.some(({ type }) => type === 'TEXT')
+	)
+		return [createButtonsBlock(node)];
+	if (node.type === 'TEXT') {
+		const size =
+			typeof node.text?.fontSize === 'number'
+				? node.text.fontSize
+				: node.fontSize;
+		return [
+			size && size > 18
+				? createHeadingBlock(node)
+				: createParagraphBlock(node),
+		];
+	}
 	if (isImage(node)) return [createImageBlock(node)];
 
 	const children =
@@ -38,7 +56,8 @@ export function convertFigmaNodeToGutenberg(node: FigmaNode): GutenbergBlock[] {
 		return [createColumnsBlock(node, columns)];
 	}
 
-	return children.flatMap(convertFigmaNodeToGutenberg);
+	const blocks = children.flatMap(convertFigmaNodeToGutenberg);
+	return blocks.length ? [createGroupBlock(node, blocks)] : [];
 }
 
 export function convertFigmaNodesToGutenberg(

@@ -33,6 +33,19 @@ export interface FigmaTextData {
 	textDecoration?: string | symbol;
 	hyperlink?: { type: string; value?: string } | null | symbol;
 	fills?: FigmaFill[] | symbol;
+	segments?: FigmaTextSegment[];
+}
+
+export interface FigmaTextSegment {
+	characters: string;
+	start: number;
+	end: number;
+	fontSize?: number;
+	fontName?: { family: string; style: string };
+	fontWeight?: number;
+	textDecoration?: string;
+	textCase?: string;
+	fills?: FigmaFill[];
 }
 
 export interface FigmaFrameData {

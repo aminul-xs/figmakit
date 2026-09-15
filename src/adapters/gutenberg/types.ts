@@ -1,7 +1,15 @@
 export type GutenbergAttributes = Record<string, unknown>;
 
 export interface GutenbergBlock {
-	name: 'core/column' | 'core/columns' | 'core/image' | 'core/paragraph';
+	name:
+		| 'core/column'
+		| 'core/columns'
+		| 'core/image'
+		| 'core/paragraph'
+		| 'core/group'
+		| 'core/heading'
+		| 'core/buttons'
+		| 'core/button';
 	attributes: GutenbergAttributes;
 	serializedAttributes?: GutenbergAttributes;
 	innerBlocks: GutenbergBlock[];

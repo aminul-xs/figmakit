@@ -6,6 +6,10 @@ const supported = new Set([
 	'core/columns',
 	'core/image',
 	'core/paragraph',
+	'core/group',
+	'core/heading',
+	'core/buttons',
+	'core/button',
 ]);
 
 export function validateGutenbergDocument(
@@ -24,6 +28,13 @@ export function validateGutenbergDocument(
 			diagnostics.push({
 				code: 'gutenberg.orphan-column',
 				message: 'core/column must be a direct child of core/columns.',
+				severity: 'error',
+				sourceNodeId: block.sourceNodeId,
+			});
+		if (block.name === 'core/button' && parent?.name !== 'core/buttons')
+			diagnostics.push({
+				code: 'gutenberg.orphan-button',
+				message: 'core/button must be a direct child of core/buttons.',
 				severity: 'error',
 				sourceNodeId: block.sourceNodeId,
 			});

@@ -12,6 +12,8 @@ import { serializeBooleanOperationNode } from './nodes/serializeBooleanOperation
 import { serializeRectangleNode } from './nodes/serializeRectangle';
 import { serializeUnknownNode } from './nodes/serializeUnknown';
 
+export { makePostMessageSafe } from './makePostMessageSafe';
+
 export function serializeNode(node: SceneNode): any {
 	switch (node.type) {
 		case 'TEXT':

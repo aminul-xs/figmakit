@@ -1,7 +1,11 @@
 import type { FigmaNode } from '@/core/figma';
 import type { ElementorElement } from './types';
 import { isContainerNode, shouldConvertNode } from './config';
-import { createWidgetFromFigmaNode, hasImageFill } from './widgetFactory';
+import {
+	createWidgetFromFigmaNode,
+	hasImageFill,
+	isButtonNode,
+} from './widgetFactory';
 
 export function convertFigmaToElementor(
 	figmaNode: FigmaNode,
@@ -16,7 +20,11 @@ export function convertFigmaToElementor(
 	const widget = createWidgetFromFigmaNode(sourceNode, depth);
 	if (!widget) return null;
 
-	if (isContainerNode(figmaNode) && figmaNode.children?.length) {
+	if (
+		isContainerNode(figmaNode) &&
+		!isButtonNode(figmaNode) &&
+		figmaNode.children?.length
+	) {
 		widget.elements = convertMultipleFigmaNodes(
 			figmaNode.children,
 			depth + 1
