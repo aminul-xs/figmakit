@@ -1,0 +1,692 @@
+{
+	"content": [
+		{
+			"id": "1becddff",
+			"settings": {
+				"content_position": "middle",
+				"structure": "30",
+				"padding": {
+					"unit": "px",
+					"top": "10",
+					"right": "45",
+					"bottom": "10",
+					"left": "45",
+					"isLinked": false
+				},
+				"padding_tablet": {
+					"unit": "px",
+					"top": "15",
+					"right": "15",
+					"bottom": "15",
+					"left": "15",
+					"isLinked": false
+				},
+				"ekit_all_conditions_list": [
+					{
+						"_id": "cd394a5"
+					}
+				],
+				"ekit_section_parallax_multi_items": [],
+				"ekit_cursor_text_label": "Elementskit Cursor",
+				"flex_direction": "row",
+				"flex_align_items": "center",
+				"flex_gap": {
+					"size": 10,
+					"column": "10",
+					"row": "10",
+					"unit": "px",
+					"isLinked": true
+				},
+				"flex_justify_content": "space-between",
+				"flex_justify_content_tablet": "space-between",
+				"flex_align_items_tablet": "center",
+				"background_background": "classic",
+				"background_color": "#FFFFFF",
+				"flex_direction_mobile": "row",
+				"flex_justify_content_mobile": "space-between",
+				"flex_align_items_mobile": "center",
+				"presetTitle": "Container",
+				"presetIcon": "eicon-container"
+			},
+			"elements": [
+				{
+					"id": "39fefe97",
+					"settings": {
+						"title": "WordPress",
+						"link": {
+							"url": "#",
+							"is_external": "",
+							"nofollow": "",
+							"custom_attributes": ""
+						},
+						"typography_typography": "custom",
+						"typography_font_family": "Newsreader",
+						"typography_font_size": {
+							"unit": "px",
+							"size": 32,
+							"sizes": []
+						},
+						"typography_font_size_tablet": {
+							"unit": "px",
+							"size": 30,
+							"sizes": []
+						},
+						"typography_font_size_mobile": {
+							"unit": "px",
+							"size": 27,
+							"sizes": []
+						},
+						"typography_font_weight": "600",
+						"typography_text_transform": "capitalize",
+						"typography_font_style": "normal",
+						"typography_text_decoration": "line-through",
+						"typography_letter_spacing": {
+							"unit": "px",
+							"size": -1,
+							"sizes": []
+						},
+						"typography_word_spacing": {
+							"unit": "px",
+							"size": 0,
+							"sizes": []
+						},
+						"title_hover_color": "#27490A",
+						"title_hover_color_transition_duration": {
+							"unit": "s",
+							"size": 0.69999999999999996,
+							"sizes": []
+						},
+						"ekit_all_conditions_list": [],
+						"ekit_badge_label": "Offer",
+						"ekit_adv_tooltip_content": "Tooltip Content.",
+						"ekit_cursor_text_label": "Elementskit Cursor",
+						"__globals__": {
+							"title_color": "globals\/colors?id=primary"
+						}
+					},
+					"elements": [],
+					"isInner": false,
+					"widgetType": "heading",
+					"elType": "widget"
+				},
+				{
+					"id": "50dec849",
+					"settings": {
+						"elementskit_nav_menu": "menu",
+						"elementskit_main_menu_position": "elementskit-menu-po-center",
+						"elementskit_menubar_height": {
+							"unit": "px",
+							"size": 70,
+							"sizes": []
+						},
+						"elementskit_content_typography_typography": "custom",
+						"elementskit_content_typography_font_family": "Inter",
+						"elementskit_content_typography_font_size": {
+							"unit": "px",
+							"size": 16,
+							"sizes": []
+						},
+						"elementskit_content_typography_font_weight": "500",
+						"elementskit_content_typography_text_transform": "capitalize",
+						"elementskit_item_color_hover": "#426B1F",
+						"elementskit_menu_item_typography_typography": "custom",
+						"elementskit_menu_item_typography_font_family": "Roboto",
+						"elementskit_menu_item_typography_font_size": {
+							"unit": "px",
+							"size": 15,
+							"sizes": []
+						},
+						"elementskit_menu_item_typography_font_weight": "400",
+						"elementskit_item_text_color_hover": "#121147",
+						"elementskit_menu_item_background_hover_background": "gradient",
+						"elementskit_submenu_container_background_background": "gradient",
+						"elementskit_submenu_container_background_color_b": "#ffffff",
+						"elementskit_submenu_container_width": "220px",
+						"elementskit_submenu_container_width_tablet": "200px",
+						"elementskit_panel_box_shadow_box_shadow_type": "yes",
+						"elementskit_menubar_height_tablet": {
+							"unit": "px",
+							"size": "",
+							"sizes": []
+						},
+						"elementskit_panel_box_shadow_box_shadow": {
+							"horizontal": "0",
+							"vertical": "0",
+							"blur": "10",
+							"spread": "0",
+							"color": "rgba(0,0,0,0.12)"
+						},
+						"ekit_nav_menu_hover_bar_switch": "yes",
+						"ekit_nav_menu_hover_bar": "#ff5e13",
+						"ekit_nav_menu_hover_width": {
+							"unit": "px",
+							"size": "2",
+							"sizes": []
+						},
+						"_z_index": "15",
+						"elementskit_menu_toggle_border_border": "solid",
+						"elementskit_menu_toggle_border_width_mobile": {
+							"unit": "px",
+							"top": "1",
+							"right": "1",
+							"bottom": "1",
+							"left": "1",
+							"isLinked": "1"
+						},
+						"elementskit_menu_toggle_border_color": "#426B1F",
+						"elementskit_menu_toggle_icon_color": "#426B1F",
+						"elementskit_menu_toggle_background_hover_background": "classic",
+						"elementskit_menu_toggle_background_hover_color": "#426B1F",
+						"elementskit_menu_toggle_icon_color_hover": "rgba(255,255,255,0.5)",
+						"elementskit_menu_close_icon_color": "#426B1F",
+						"ekit_all_conditions_list": [
+							{
+								"_id": "afcde68"
+							}
+						],
+						"elementskit_nav_menu_logo": {
+							"id": "",
+							"url": "http:\/\/localhost.loca\/wp-content\/plugins\/elementor\/assets\/images\/placeholder.png"
+						},
+						"elementskit_menu_item_spacing": {
+							"unit": "px",
+							"top": "0",
+							"right": "15",
+							"bottom": "0",
+							"left": "15",
+							"isLinked": false
+						},
+						"_border_width": {
+							"unit": "px",
+							"top": "0",
+							"right": "1",
+							"bottom": "0",
+							"left": "1",
+							"isLinked": false
+						},
+						"_border_color": "#D4D6E3",
+						"elementskit_nav_menu_active_text_color": "#426B1F",
+						"elementskit_style_tab_submenu_indicator_color": "#021343",
+						"elementskit_submenu_item_spacing": {
+							"unit": "px",
+							"top": "6",
+							"right": "0",
+							"bottom": "7",
+							"left": "0",
+							"isLinked": false
+						},
+						"sub_panel_padding": {
+							"unit": "px",
+							"top": "15",
+							"right": "15",
+							"bottom": "15",
+							"left": "25",
+							"isLinked": false
+						},
+						"ekit_adv_tooltip_content": "Tooltip Content.",
+						"ekit_cursor_text_label": "Elementskit Cursor",
+						"_margin": {
+							"unit": "px",
+							"top": "0",
+							"right": "0",
+							"bottom": "0",
+							"left": "0",
+							"isLinked": false
+						},
+						"elementskit_menu_text_border_hover_border": "none",
+						"elementskit_menu_text_border_hover_width": {
+							"unit": "px",
+							"top": "0",
+							"right": "0",
+							"bottom": "0",
+							"left": "0",
+							"isLinked": false
+						},
+						"_margin_tablet": {
+							"unit": "px",
+							"top": "0",
+							"right": "0",
+							"bottom": "0",
+							"left": "0",
+							"isLinked": false
+						},
+						"_margin_mobile": {
+							"unit": "px",
+							"top": "0",
+							"right": "0",
+							"bottom": "0",
+							"left": "0",
+							"isLinked": false
+						},
+						"_flex_size_tablet": "grow",
+						"ekit_badge_label": "Offer"
+					},
+					"elements": [],
+					"isInner": false,
+					"widgetType": "ekit-nav-menu",
+					"elType": "widget"
+				},
+				{
+					"id": "5281d58c",
+					"settings": {
+						"text": "Basket (3)",
+						"typography_typography": "custom",
+						"typography_font_family": "Inter",
+						"typography_font_size": {
+							"unit": "px",
+							"size": 16,
+							"sizes": []
+						},
+						"typography_font_weight": "500",
+						"background_color": "#426B1F",
+						"border_radius": {
+							"unit": "px",
+							"top": "8",
+							"right": "8",
+							"bottom": "8",
+							"left": "8",
+							"isLinked": true
+						},
+						"text_padding": {
+							"unit": "px",
+							"top": "13",
+							"right": "23",
+							"bottom": "13",
+							"left": "23",
+							"isLinked": false
+						},
+						"ekit_all_conditions_list": [],
+						"ekit_badge_label": "Offer",
+						"ekit_adv_tooltip_content": "Tooltip Content.",
+						"ekit_cursor_text_label": "Elementskit Cursor"
+					},
+					"elements": [],
+					"isInner": false,
+					"widgetType": "button",
+					"elType": "widget"
+				}
+			],
+			"isInner": false,
+			"elType": "container"
+		},
+		{
+			"id": "197f5863",
+			"settings": {
+				"flex_direction": "column",
+				"flex_justify_content": "center",
+				"flex_align_items": "center",
+				"padding": {
+					"unit": "px",
+					"top": "160",
+					"right": "0",
+					"bottom": "150",
+					"left": "0",
+					"isLinked": false
+				},
+				"ekit_section_parallax_multi_items": [],
+				"ekit_all_conditions_list": [],
+				"ekit_cursor_text_label": "Elementskit Cursor",
+				"padding_tablet": {
+					"unit": "px",
+					"top": "100",
+					"right": "0",
+					"bottom": "100",
+					"left": "0",
+					"isLinked": false
+				},
+				"padding_mobile": {
+					"unit": "px",
+					"top": "80",
+					"right": "0",
+					"bottom": "80",
+					"left": "0",
+					"isLinked": false
+				}
+			},
+			"elements": [
+				{
+					"id": "4001f8b",
+					"settings": {
+						"ekit_heading_title": "We\u2019re {{farmers, purveyors, and eaters}} of <br> organically grown food.",
+						"ekit_heading_sub_title": "Time has changed",
+						"shadow_text_content": "bussiness",
+						"ekit_heading_show_seperator": "",
+						"ekit_heading_title_align": "text_center",
+						"ekit_heading_title_typography_typography": "custom",
+						"ekit_heading_title_typography_font_family": "Newsreader",
+						"ekit_heading_title_typography_font_size": {
+							"unit": "px",
+							"size": 64,
+							"sizes": []
+						},
+						"ekit_heading_title_typography_font_size_tablet": {
+							"unit": "px",
+							"size": 52,
+							"sizes": []
+						},
+						"ekit_heading_title_typography_font_size_mobile": {
+							"unit": "px",
+							"size": 28,
+							"sizes": []
+						},
+						"ekit_heading_title_typography_font_weight": "400",
+						"ekit_heading_focused_title_typography_typography": "custom",
+						"ekit_heading_focused_title_typography_font_family": "Newsreader",
+						"ekit_heading_focused_title_typography_font_size": {
+							"unit": "px",
+							"size": 64,
+							"sizes": []
+						},
+						"ekit_heading_focused_title_typography_font_size_tablet": {
+							"unit": "px",
+							"size": 52,
+							"sizes": []
+						},
+						"ekit_heading_focused_title_typography_font_size_mobile": {
+							"unit": "px",
+							"size": 28,
+							"sizes": []
+						},
+						"ekit_heading_focused_title_typography_font_weight": "400",
+						"ekit_heading_focused_title_typography_font_style": "italic",
+						"_margin": {
+							"unit": "px",
+							"top": "0",
+							"right": "0",
+							"bottom": "10",
+							"left": "0",
+							"isLinked": false
+						},
+						"ekit_all_conditions_list": [],
+						"ekit_badge_label": "Offer",
+						"ekit_adv_tooltip_content": "Tooltip Content.",
+						"ekit_cursor_text_label": "Elementskit Cursor"
+					},
+					"elements": [],
+					"isInner": false,
+					"widgetType": "elementskit-heading",
+					"elType": "widget"
+				},
+				{
+					"id": "47d2179",
+					"settings": {
+						"text": "Browse our shop",
+						"typography_typography": "custom",
+						"typography_font_family": "Inter",
+						"typography_font_size": {
+							"unit": "px",
+							"size": 16,
+							"sizes": []
+						},
+						"typography_font_weight": "500",
+						"border_radius": {
+							"unit": "px",
+							"top": "8",
+							"right": "8",
+							"bottom": "8",
+							"left": "8",
+							"isLinked": true
+						},
+						"text_padding": {
+							"unit": "px",
+							"top": "13",
+							"right": "23",
+							"bottom": "13",
+							"left": "23",
+							"isLinked": false
+						},
+						"ekit_all_conditions_list": [],
+						"ekit_badge_label": "Offer",
+						"ekit_adv_tooltip_content": "Tooltip Content.",
+						"ekit_cursor_text_label": "Elementskit Cursor",
+						"__globals__": {
+							"background_color": "globals\/colors?id=primary"
+						}
+					},
+					"elements": [],
+					"isInner": false,
+					"widgetType": "button",
+					"elType": "widget"
+				}
+			],
+			"isInner": false,
+			"elType": "container"
+		},
+		{
+			"id": "c111d31",
+			"settings": {
+				"flex_direction": "row",
+				"flex_align_items": "center",
+				"flex_gap": {
+					"column": "",
+					"row": "",
+					"isLinked": true,
+					"unit": "px",
+					"size": null
+				},
+				"ekit_section_parallax_multi_items": [],
+				"ekit_all_conditions_list": [],
+				"ekit_cursor_text_label": "Elementskit Cursor"
+			},
+			"elements": [
+				{
+					"id": "6c14f661",
+					"settings": {
+						"content_width": "full",
+						"boxed_width": {
+							"unit": "%",
+							"size": 100,
+							"sizes": []
+						},
+						"boxed_width_tablet": {
+							"unit": "%",
+							"size": "",
+							"sizes": []
+						},
+						"boxed_width_mobile": {
+							"unit": "%",
+							"size": "",
+							"sizes": []
+						},
+						"ekit_section_parallax_multi_items": [],
+						"ekit_all_conditions_list": [],
+						"ekit_cursor_text_label": "Elementskit Cursor"
+					},
+					"elements": [
+						{
+							"id": "3b64d11a",
+							"settings": {
+								"image": {
+									"url": "http:\/\/localhost.loca\/wp-content\/uploads\/2026\/02\/jonathan-kemper-1HHrdIoLFpU-unsplash-1.png",
+									"id": 1498,
+									"size": "",
+									"alt": "",
+									"source": "library"
+								},
+								"align": "start",
+								"ekit_all_conditions_list": [],
+								"ekit_badge_label": "Offer",
+								"ekit_adv_tooltip_content": "Tooltip Content.",
+								"ekit_cursor_text_label": "Elementskit Cursor"
+							},
+							"elements": [],
+							"isInner": false,
+							"widgetType": "image",
+							"elType": "widget"
+						}
+					],
+					"isInner": true,
+					"elType": "container"
+				},
+				{
+					"id": "7c678118",
+					"settings": {
+						"content_width": "full",
+						"ekit_section_parallax_multi_items": [],
+						"ekit_all_conditions_list": [],
+						"ekit_cursor_text_label": "Elementskit Cursor"
+					},
+					"elements": [
+						{
+							"id": "4c4a7f21",
+							"settings": {
+								"image": {
+									"url": "http:\/\/localhost.loca\/wp-content\/uploads\/2026\/02\/Stocksy_txp226f62b2aNe300_Medium_4582193-1.png",
+									"id": 1497,
+									"size": "",
+									"alt": "",
+									"source": "library"
+								},
+								"ekit_all_conditions_list": [],
+								"ekit_badge_label": "Offer",
+								"ekit_adv_tooltip_content": "Tooltip Content.",
+								"ekit_cursor_text_label": "Elementskit Cursor"
+							},
+							"elements": [],
+							"isInner": false,
+							"widgetType": "image",
+							"elType": "widget"
+						},
+						{
+							"id": "7b90e152",
+							"settings": {
+								"editor": "<p>Central <strong>California<\/strong> \u2014 The person who grew these was located in Central California and, er, hopefully very well-compensated.<\/p>",
+								"typography_typography": "custom",
+								"typography_font_family": "Inter",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 14,
+									"sizes": []
+								},
+								"typography_font_weight": "400",
+								"ekit_all_conditions_list": [],
+								"ekit_badge_label": "Offer",
+								"ekit_adv_tooltip_content": "Tooltip Content.",
+								"ekit_cursor_text_label": "Elementskit Cursor",
+								"__globals__": {
+									"text_color": "globals\/colors?id=secondary"
+								}
+							},
+							"elements": [],
+							"isInner": false,
+							"widgetType": "text-editor",
+							"elType": "widget"
+						}
+					],
+					"isInner": true,
+					"elType": "container"
+				}
+			],
+			"isInner": false,
+			"elType": "container"
+		},
+		{
+			"id": "6ff3e405",
+			"settings": {
+				"flex_direction": "row",
+				"ekit_section_parallax_multi_items": [],
+				"ekit_all_conditions_list": [],
+				"ekit_cursor_text_label": "Elementskit Cursor"
+			},
+			"elements": [
+				{
+					"id": "7b11b6e3",
+					"settings": {
+						"content_width": "full",
+						"width": {
+							"unit": "%",
+							"size": 30.195
+						},
+						"_flex_size": "none",
+						"ekit_section_parallax_multi_items": [],
+						"ekit_all_conditions_list": [],
+						"ekit_cursor_text_label": "Elementskit Cursor",
+						"_element_width": "initial"
+					},
+					"elements": [
+						{
+							"id": "6954e3ba",
+							"settings": {
+								"title": "WHAT WE BELIEVE",
+								"header_size": "span",
+								"ekit_all_conditions_list": [],
+								"ekit_badge_label": "Offer",
+								"ekit_adv_tooltip_content": "Tooltip Content.",
+								"ekit_cursor_text_label": "Elementskit Cursor"
+							},
+							"elements": [],
+							"isInner": false,
+							"widgetType": "heading",
+							"elType": "widget"
+						}
+					],
+					"isInner": true,
+					"elType": "container"
+				},
+				{
+					"id": "4a90e73d",
+					"settings": {
+						"content_width": "full",
+						"ekit_section_parallax_multi_items": [],
+						"ekit_all_conditions_list": [],
+						"ekit_cursor_text_label": "Elementskit Cursor"
+					},
+					"elements": [
+						{
+							"id": "32c6e2c2",
+							"settings": {
+								"editor": "<p>We believe in produce. Tasty produce. Produce like:<br \/><br \/>Apples. Oranges. Limes. Lemons. Guavas. Carrots. Cucumbers. Jicamas. Cauliflowers. Brussels sprouts. Shallots. Japanese eggplants. Asparagus. Artichokes\u2014Jerusalem artichokes, too. Radishes. Broccoli. Baby broccoli. Broccolini. Bok choy. Scallions. Ginger. Cherries. Raspberries. Cilantro. Parsley. Dill. <br \/><br \/>What are we forgetting?<br \/><br \/>Oh! Onions. Yams. Avocados. Lettuce. Arugula (to some, \u201crocket\u201d). Persian cucumbers, in addition to aforementioned \u201cnormal\u201d cucumbers. Artichokes. Zucchinis. Pumpkins. Squash (what some cultures call pumpkins). Sweet potatoes and potato-potatoes. Jackfruit. Monk fruit. Fruit of the Loom. Fruits of our labor (this website). Sorrel. Pineapple. Mango. Gooseberries. Blackberries. Tomatoes. Heirloom tomatoes. Beets. Chives. Corn. Endive. Escarole, which, we swear, we\u2019re vendors of organic produce, but if you asked us to describe what escaroles are...<\/p>",
+								"typography_typography": "custom",
+								"typography_font_family": "Inter",
+								"typography_font_size": {
+									"unit": "px",
+									"size": 14,
+									"sizes": []
+								},
+								"typography_font_weight": "400",
+								"ekit_all_conditions_list": [],
+								"ekit_badge_label": "Offer",
+								"ekit_adv_tooltip_content": "Tooltip Content.",
+								"ekit_cursor_text_label": "Elementskit Cursor",
+								"__globals__": {
+									"text_color": "globals\/colors?id=secondary"
+								}
+							},
+							"elements": [],
+							"isInner": false,
+							"widgetType": "text-editor",
+							"elType": "widget"
+						}
+					],
+					"isInner": true,
+					"elType": "container"
+				}
+			],
+			"isInner": false,
+			"elType": "container"
+		}
+	],
+	"page_settings": {
+		"margin": {
+			"unit": "px",
+			"top": "0",
+			"right": "0",
+			"bottom": "0",
+			"left": "0",
+			"isLinked": false
+		},
+		"padding": {
+			"unit": "px",
+			"top": "0",
+			"right": "0",
+			"bottom": "0",
+			"left": "0",
+			"isLinked": false
+		},
+		"background_background": "classic",
+		"background_color": "#FFFFFF"
+	},
+	"version": "0.4",
+	"title": "Figma Kit",
+	"type": "page"
+}

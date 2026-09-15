@@ -1,43 +1,44 @@
 // This code runs in Figma's plugin sandbox
 // It has access to the Figma API but no browser/DOM APIs
 
-figma.showUI(__html__, { width: 400, height: 500 });
+import { serializeNode } from './serializer';
+
+figma.showUI(__html__, { width: 400, height: 600 });
 
 // Listen for messages from the UI
 figma.ui.onmessage = async (msg) => {
-	if (msg.type === 'create-rectangles') {
-		const { count } = msg;
+	if (msg.type === 'get-figma-nodes') {
+		console.log('msg received in UI #1:', msg);
+		try {
+			// Get only selected nodes
+			const selection = figma.currentPage.selection;
+			console.log('selection:', selection);
 
-		const nodes: SceneNode[] = [];
+			if (!selection || selection.length === 0) {
+				figma.ui.postMessage({
+					type: 'error',
+					message:
+						'No nodes selected. Please select one or more nodes.',
+				});
+				return;
+			}
 
-		for (let i = 0; i < count; i++) {
-			const rect = figma.createRectangle();
-			rect.x = i * 150;
-			rect.fills = [
-				{
-					type: 'SOLID',
-					color: {
-						r: Math.random(),
-						g: Math.random(),
-						b: Math.random(),
-					},
-				},
-			];
-			figma.currentPage.appendChild(rect);
-			nodes.push(rect);
+			const nodes = selection.map((node) => serializeNode(node));
+			console.log('nodes serialized in UI #2:', selection);
+
+			// Send back to UI
+			figma.ui.postMessage({
+				type: 'figma-nodes-data',
+				nodes: nodes,
+			});
+		} catch (error) {
+			figma.ui.postMessage({
+				type: 'error',
+				message:
+					error instanceof Error
+						? error.message
+						: 'Failed to read nodes',
+			});
 		}
-
-		figma.currentPage.selection = nodes;
-		figma.viewport.scrollAndZoomIntoView(nodes);
-
-		// Send message back to UI
-		figma.ui.postMessage({
-			type: 'rectangles-created',
-			count: nodes.length,
-		});
-	}
-
-	if (msg.type === 'close') {
-		figma.closePlugin();
 	}
 };

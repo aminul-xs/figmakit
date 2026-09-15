@@ -7,11 +7,10 @@
 		"dev:ui": "vite build --watch",
 		"dev:plugin": "node build-plugin.js --watch",
 		"dev": "concurrently \"npm run dev:ui\" \"npm run dev:plugin\"",
-
 		"build:ui": "vite build",
 		"build:plugin": "node build-plugin.js",
 		"build": "concurrently \"npm run build:ui\" \"npm run build:plugin\"",
-
+		"typecheck": "tsc --noEmit",
 		"format": "prettier --write .",
 		"format:check": "prettier --check ."
 	},
@@ -20,17 +19,18 @@
 		"react-dom": "^19.2.4"
 	},
 	"devDependencies": {
-		"@figma/plugin-typings": "^1.123.0",
 		"@figma/eslint-plugin-figma-plugins": "*",
-    	"@typescript-eslint/eslint-plugin": "^6.12.0",
-   		"@typescript-eslint/parser": "^6.12.0",
+		"@figma/plugin-typings": "^1.123.0",
+		"@types/node": "^25.2.2",
 		"@types/react": "^19.2.10",
 		"@types/react-dom": "^19.2.3",
+		"@typescript-eslint/eslint-plugin": "^6.12.0",
+		"@typescript-eslint/parser": "^6.12.0",
 		"@vitejs/plugin-react": "^5.1.2",
 		"concurrently": "^9.2.1",
 		"esbuild": "^0.27.2",
 		"prettier": "^3.8.1",
-		"typescript": "^5.9.3",
+		"typescript": "^7.0.2",
 		"vite": "^7.3.1",
 		"vite-plugin-singlefile": "^2.3.0"
 	}

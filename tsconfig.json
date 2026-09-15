@@ -15,10 +15,12 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
-		"typeRoots": [
-			"./node_modules/@types",
-			"./node_modules/@figma",
-		]
+		"typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
+
+		/* One stable root alias; TypeScript 7 resolves paths relative to this file. */
+		"paths": {
+			"@/*": ["./src/*"]
+		}
 	},
-	"include": ["src"]
+	"include": ["src", "node_modules/@figma/plugin-typings/index.d.ts"]
 }

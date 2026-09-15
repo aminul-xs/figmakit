@@ -1,5 +1,5 @@
 {
-    "editor.insertSpaces": false,
+	"editor.insertSpaces": false,
 	"editor.tabSize": 4,
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -11,5 +11,8 @@
 	},
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
 	}
 }
