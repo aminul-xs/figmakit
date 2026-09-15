@@ -1,256 +1,273 @@
-# FigmaKit Widget Architecture
+# FigmaKit Architecture
 
-Complete scalable widget-based architecture for converting Figma designs to WordPress Elementor.
+**Status:** Active architecture
 
-## 📁 Structure
+**Stage:** Pre-release foundation
+**Detailed research:** [RND.md](RND.md)
 
+**Product flow:** [UI_UX_FLOW.md](UI_UX_FLOW.md)
+
+## Goals
+
+FigmaKit converts one Figma selection into four native WordPress targets:
+
+- Elementor
+- Gutenberg
+- ElementsKit
+- GutenKit
+
+The architecture keeps platform extraction, normalized design meaning, target serialization, AI assistance, validation, and UI separate. There is no legacy compatibility layer because the project has not been released.
+
+## Dependency direction
+
+```text
+plugin ──► core ◄── ai
+            │
+            ▼
+         adapters ──► validation
+            │
+            ▼
+            ui
 ```
+
+Rules:
+
+1. `core` must not import from `adapters` or `ui`.
+2. Each adapter owns its target types, schemas, factories, and mappers.
+3. `ui` may orchestrate public adapter APIs but must not contain conversion logic.
+4. AI may propose typed decisions but cannot generate unchecked final output.
+5. Shared helpers must be platform-neutral.
+6. Target-specific settings must never live in generic `src/types` or `src/ui` folders.
+
+## Repository structure
+
+```text
 src/
-├── ui/
-│   ├── widgets/              # Widget definitions
-│   │   ├── heading/          # Heading widget
-│   │   │   ├── headingWidget.ts
-│   │   │   ├── headingControls.ts
-│   │   │   └── index.ts
-│   │   ├── image/            # Image widget
-│   │   │   ├── imageWidget.ts
-│   │   │   ├── imageControls.ts
-│   │   │   └── index.ts
-│   │   ├── container/        # Container widget
-│   │   │   ├── containerWidget.ts
-│   │   │   ├── containerControls.ts
-│   │   │   └── index.ts
-│   │   └── index.ts          # Widget registry
-│   │
-│   ├── config/               # Configuration
-│   │   ├── widgetsConfig.ts  # Figma → Elementor mapping
-│   │   └── example.ts        # Working example
-│   │
-│   ├── builder/              # Conversion engines
-│   │   ├── widgetFactory.ts  # Widget creation
-│   │   ├── elementorBuilder.ts # Recursive converter
-│   │   └── pageBuilder.ts    # Page export
-│   │
-│   ├── utils/                # Utilities
-│   │   ├── getUniqueId.ts
-│   │   └── getIsInner.ts
-│   │
-│   └── index.ts              # Main export
-│
-└── types/
-    ├── widget.ts             # Widget types
-    └── elementor.ts          # Elementor types
+  plugin/
+    code.ts
+    serializer/
+  core/
+    figma/
+    targets/
+    ir/                    # next milestone
+    normalize/             # next milestone
+    inference/             # next milestone
+    diagnostics/           # next milestone
+    assets/                # next milestone
+  adapters/
+    elementor/
+      widgets/
+        container/
+        heading/
+        image/
+      adapter.ts
+      config.ts
+      converter.ts
+      pageBuilder.ts
+      types.ts
+      widgetFactory.ts
+    gutenberg/             # planned
+    elementskit/           # planned
+    gutenkit/              # planned
+  ai/                      # planned
+  validation/              # planned
+  utils/
+  ui/
+    components/
+    App.tsx
+    App.css
+    main.tsx
+tests/                     # planned
+wordpress-connector/       # planned
+docs/
 ```
 
-## 🚀 Usage
+## Runtime boundaries
 
-### Basic Conversion
+### Figma plugin main thread
+
+`src/plugin` is the only layer that talks directly to the Figma Plugin API. It reads the current selection and serializes supported source properties. It does not know Elementor, Gutenberg, ElementsKit, GutenKit, React, or AI provider formats.
+
+### React UI iframe
+
+`src/ui` presents selection status, target choice, preflight diagnostics, AI controls, mapping review, progress, and output. It calls public application services/adapters and renders results. It must not implement mapping tables or target serialization.
+
+### Backend and WordPress connector
+
+Future AI requests and authenticated WordPress operations run outside the client bundle. Secrets must never be embedded in the Figma plugin. Direct WordPress delivery creates drafts by default and validates dependencies before import.
+
+## Core contracts
+
+### Figma source contract
+
+`src/core/figma` is the typed boundary between the serializer and conversion pipeline. It represents captured Figma data only. It is not the future Design IR and must not gain Elementor or Gutenberg fields.
+
+### Target adapter contract
+
+Every output target implements:
 
 ```typescript
-import { buildAndExportElementorPage } from './ui/builder/pageBuilder';
-import { FigmaNode } from './types/elementor';
-
-const figmaNode: FigmaNode = {
-	id: 'frame-1',
-	type: 'FRAME',
-	name: 'My Page',
-	children: [
-		{
-			id: 'text-1',
-			type: 'TEXT',
-			characters: 'Hello World',
-			style: {
-				fontSize: 32,
-				fontFamily: 'Inter',
-			},
-		},
-	],
-};
-
-// Convert and export
-const elementorJSON = buildAndExportElementorPage(figmaNode, 'My Page');
-console.log(elementorJSON);
-```
-
-### Create Individual Widgets
-
-```typescript
-import { createHeadingWidget } from './ui/widgets/heading';
-import { createImageWidget } from './ui/widgets/image';
-import { createContainerWidget } from './ui/widgets/container';
-
-// Create heading
-const heading = createHeadingWidget('My Heading', {
-	typography_font_size: { unit: 'px', size: 48, sizes: [] },
-	title_color: '#FF0000',
-});
-
-// Create image
-const image = createImageWidget('https://example.com/image.jpg', {
-	width: { unit: 'px', size: 800, sizes: [] },
-	height: { unit: 'px', size: 600, sizes: [] },
-});
-
-// Create container
-const container = createContainerWidget({
-	flex_direction: 'row',
-	flex_gap: { size: 20, column: '20', row: '20', unit: 'px', isLinked: true },
-});
-
-// Add children to container
-container.elements.push(heading, image);
-```
-
-### Advanced Usage - Custom Mapping
-
-```typescript
-import { convertFigmaToElementor } from './ui/builder/elementorBuilder';
-import { ElementorPage } from './types/elementor';
-
-// Convert single node
-const element = convertFigmaToElementor(figmaNode);
-
-// Build custom page
-const page: ElementorPage = {
-	content: element ? [element] : [],
-	page_settings: [],
-	version: '3.16.0',
-	title: 'Custom Page',
-	type: 'page',
-};
-```
-
-## 📦 Widget Types
-
-### Heading Widget
-
-- **Figma**: TEXT nodes
-- **Elementor**: heading widget
-- **Settings**: Typography, color, alignment
-
-### Image Widget
-
-- **Figma**: IMAGE nodes, RECTANGLE with image fills
-- **Elementor**: image widget
-- **Settings**: Dimensions, object-fit, border-radius
-
-### Container Widget
-
-- **Figma**: FRAME, GROUP nodes
-- **Elementor**: container element
-- **Settings**: Flexbox, padding, background, gap
-
-## 🔧 Configuration
-
-### Figma → Elementor Mapping
-
-```typescript
-// src/ui/config/widgetsConfig.ts
-export const NodeToElementorMap = {
-	TEXT: 'heading',
-	IMAGE: 'image',
-	FRAME: 'container',
-	GROUP: 'container',
-	RECTANGLE: 'container',
-};
-```
-
-### Widget Registry
-
-```typescript
-// src/ui/widgets/index.ts
-export const WidgetsRegistry = {
-	heading: createHeadingWidget,
-	image: createImageWidget,
-	container: createContainerWidget,
-};
-```
-
-## 📝 Example Output
-
-The system generates valid Elementor export JSON:
-
-```json
-{
-	"content": [
-		{
-			"id": "abc123",
-			"elType": "container",
-			"settings": {
-				"flex_direction": "column",
-				"padding": {
-					"unit": "px",
-					"top": "20",
-					"right": "20",
-					"bottom": "20",
-					"left": "20",
-					"isLinked": false
-				}
-			},
-			"elements": [
-				{
-					"id": "def456",
-					"elType": "widget",
-					"widgetType": "heading",
-					"settings": {
-						"title": "Hello World",
-						"typography_font_size": {
-							"unit": "px",
-							"size": 32,
-							"sizes": []
-						}
-					},
-					"elements": []
-				}
-			]
-		}
-	],
-	"page_settings": [],
-	"version": "3.16.0",
-	"title": "My Page",
-	"type": "page"
+interface TargetAdapter<TInput, TOutput> {
+  readonly target: ConversionTarget;
+  preflight(input: TInput): ConversionDiagnostic[];
+  transform(input: TInput): TOutput;
+  validate(output: TOutput): ValidationResult;
+  package(output: TOutput): ExportArtifact;
 }
 ```
 
-## 🎯 Features
+Responsibilities:
 
-✅ **Widget-Based Architecture** - Modular and maintainable  
-✅ **Recursive Conversion** - Handles nested structures  
-✅ **Smart Mapping** - Automatic Figma → Elementor translation  
-✅ **Type-Safe** - Full TypeScript support  
-✅ **Extensible** - Easy to add new widgets  
-✅ **Production Ready** - Generates valid Elementor JSON
+- `preflight`: report unsupported, ambiguous, or missing inputs before conversion;
+- `transform`: create target-native output;
+- `validate`: enforce structural and compatibility rules;
+- `package`: produce the downloadable/importable artifact.
 
-## 🧪 Testing
+### Design IR milestone
 
-Run the example:
+The current Elementor adapter temporarily consumes typed Figma nodes directly. The next foundation milestone adds:
 
-```bash
-npm run dev
-# or
-ts-node src/ui/config/example.ts
+```text
+FigmaNode[] → normalize() → DesignDocument → TargetAdapter
 ```
 
-## 🔄 Adding New Widgets
+`DesignDocument` will contain semantic roles, normalized layout, visual styles, typography, tokens, responsive overrides, assets, children, inference evidence, and diagnostics. All four adapters will consume the same IR.
 
-1. Create widget folder: `src/ui/widgets/mywidget/`
-2. Create files:
-    - `myWidgetWidget.ts` - Widget structure
-    - `myWidgetControls.ts` - Settings & mapping
-    - `index.ts` - Exports
-3. Register in `src/ui/widgets/index.ts`
-4. Add mapping in `src/ui/config/widgetsConfig.ts`
+## Elementor adapter
 
-## 📚 API Reference
+The migrated Elementor prototype now lives completely in `src/adapters/elementor`.
 
-### Core Functions
+```text
+ElementorAdapter
+  ├── config.ts
+  ├── converter.ts
+  ├── pageBuilder.ts
+  ├── types.ts
+  ├── widgetFactory.ts
+  └── widgets/
+      ├── container/
+      │   ├── containerWidget.ts
+      │   ├── containerMapper.ts
+      │   └── index.ts
+      ├── heading/
+      │   ├── headingWidget.ts
+      │   ├── headingMapper.ts
+      │   └── index.ts
+      └── image/
+          ├── imageWidget.ts
+          ├── imageMapper.ts
+          └── index.ts
+```
 
-- `buildAndExportElementorPage(node, title)` - Complete conversion
-- `convertFigmaToElementor(node, depth)` - Recursive conversion
-- `createWidgetFromFigmaNode(node, depth)` - Widget creation
-- `getWidgetTypeFromFigmaNode(type)` - Type mapping
+### Current flow
 
-### Utilities
+```text
+typed Figma nodes
+  → node-to-widget selection
+  → Elementor widget mapper
+  → recursive converter
+  → page builder
+  → adapter validation
+  → JSON artifact
+```
 
-- `getUniqueId()` - Generate unique element IDs
-- `getIsInner(depth)` - Determine if element is nested
+### Current support
+
+- Container
+- Heading
+- Image-fill geometry → Image widget
+- Nested conversion
+- Elementor template version `0.4`
+- Basic preflight, validation, and JSON packaging
+
+### Known limitations
+
+- All text still maps to Heading; semantic text classification is pending.
+- Image references are placeholders until asset extraction/upload exists.
+- Only a small subset of Elementor settings is mapped.
+- Real WordPress import/edit/save/reload compatibility tests are pending.
+- Element IDs are unique but not yet deterministic from source IDs.
+
+## Future adapter relationships
+
+```text
+Elementor base ──► ElementsKit extension
+Gutenberg base ──► GutenKit extension
+```
+
+ElementsKit reuses verified Elementor layout behavior and adds versioned ElementsKit widget schemas. GutenKit reuses the Gutenberg block tree and serializer while adding verified GutenKit block schemas. Every addon component must define a core fallback.
+
+## Adding an Elementor widget
+
+Add target-specific code in a folder named after the widget, for example `src/adapters/elementor/widgets/button/`:
+
+1. Add the settings contract to `src/adapters/elementor/types.ts`.
+2. Add `{name}Widget.ts`, `{name}Mapper.ts`, and `index.ts` inside that folder.
+3. Export and register the folder in `widgets/index.ts`.
+4. Add its semantic mapping in `config.ts` or the future inference layer.
+5. Add a real exported Elementor fixture.
+6. Test import, edit, save, reload, and frontend rendering.
+
+Example imports:
+
+```typescript
+import type { FigmaNode } from '@/core/figma';
+import { createElementId } from '@/utils';
+import type { ElementorElement } from '@/adapters/elementor';
+```
+
+Do not add widgets under `src/ui`, add target types under generic `src/types`, or recreate builder folders.
+
+## AI boundary
+
+AI receives only a compact normalized ambiguous subtree. It returns a typed semantic/mapping decision with confidence, alternatives, evidence codes, responsive intent, and warnings.
+
+AI does not own:
+
+- raw Figma extraction;
+- exact unit/color conversion;
+- final Elementor JSON or Gutenberg markup;
+- schema validation;
+- file packaging;
+- publishing authorization.
+
+When AI is unavailable, deterministic conversion remains functional.
+
+## Validation strategy
+
+Validation is layered:
+
+1. Source validation
+2. Design IR schema validation
+3. Adapter output validation
+4. Parser/schema validation
+5. Real WordPress import
+6. Editor edit/save/reload
+7. Frontend render
+8. Multi-breakpoint visual regression
+
+Passing TypeScript compilation is necessary but not proof of WordPress compatibility.
+
+## Import conventions
+
+Use one root alias:
+
+```typescript
+import type { FigmaNode } from '@/core/figma';
+import { elementorAdapter } from '@/adapters/elementor';
+import { rgbToHex } from '@/utils';
+```
+
+Avoid aliases tied to obsolete folder ownership such as `@/builder`, `@/widgets`, `@/config`, or `@/utils`.
+
+## Architectural release gates
+
+Before calling the architecture production-ready:
+
+- Design IR is the input to all target adapters.
+- Elementor and Gutenberg base adapters pass real compatibility suites.
+- ElementsKit and GutenKit mappings use verified versioned fixtures.
+- AI has a typed schema, privacy controls, evaluation benchmark, and deterministic fallback.
+- UI follows the Material 3 specification in [RND.md](RND.md).
+- WordPress imports remain editable after save/reload.
+- Every lossy mapping emits a user-facing diagnostic.

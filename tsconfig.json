@@ -17,22 +17,10 @@
 		"noFallthroughCasesInSwitch": true,
 		"typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
 		
-		/* Path Mappings for Clean Imports */
+		/* One stable root alias; domain ownership is expressed by folders. */
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
-			"@/types": ["src/types"],
-			"@/types/*": ["src/types/*"],
-			"@/utils": ["src/ui/utils"],
-			"@/utils/*": ["src/ui/utils/*"],
-			"@/widgets": ["src/ui/widgets"],
-			"@/widgets/*": ["src/ui/widgets/*"],
-			"@/builder": ["src/ui/builder"],
-			"@/builder/*": ["src/ui/builder/*"],
-			"@/config": ["src/ui/config"],
-			"@/config/*": ["src/ui/config/*"],
-			"@/components": ["src/ui/components"],
-			"@/components/*": ["src/ui/components/*"]
+			"@/*": ["src/*"]
 		}
 	},
 	"include": ["src"]

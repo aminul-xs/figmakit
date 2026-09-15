@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import type { ElementorPage, FigmaNode } from '@/types/elementor';
-import { buildElementorPage } from '@/builder/pageBuilder';
+import type { FigmaNode } from '@/core/figma';
+import { buildElementorPage, type ElementorPage } from '@/adapters/elementor';
 
 export default function FigmaToElementor() {
 	const [elementorData, setElementorData] = useState<ElementorPage | null>(
