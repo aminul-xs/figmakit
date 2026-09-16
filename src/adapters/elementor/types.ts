@@ -72,6 +72,27 @@ export interface ImageWidgetSettings extends Record<string, unknown> {
 	opacity?: ElementorDimension;
 }
 
+export interface TextEditorWidgetSettings extends Record<string, unknown> {
+	editor?: string;
+	align?: string;
+	text_color?: string;
+	typography_typography?: string;
+	typography_font_family?: string;
+	typography_font_size?: ElementorDimension;
+	typography_font_weight?: string;
+}
+
+export interface ButtonWidgetSettings extends Record<string, unknown> {
+	text?: string;
+	link?: ElementorLink;
+	align?: string;
+	button_text_color?: string;
+	background_color?: string;
+	border_radius?: ElementorBox;
+	typography_typography?: string;
+	typography_font_size?: ElementorDimension;
+}
+
 export interface ContainerWidgetSettings extends Record<string, unknown> {
 	content_position?: string;
 	content_width?: 'boxed' | 'full';

@@ -14,6 +14,21 @@ export function escapeHtml(value: string): string {
 	);
 }
 
+export function richTextHtml(node: FigmaNode): string {
+	if (!node.text?.segments?.length)
+		return escapeHtml(node.text?.characters ?? node.characters ?? '');
+	return node.text.segments
+		.map((segment) => {
+			const content = escapeHtml(segment.characters);
+			if (segment.fontName && /italic/i.test(segment.fontName.style))
+				return `<em>${content}</em>`;
+			if (segment.textDecoration && segment.textDecoration !== 'NONE')
+				return `<u>${content}</u>`;
+			return content;
+		})
+		.join('');
+}
+
 export function escapeAttribute(value: string): string {
 	return escapeHtml(value).replace(/'/g, '&#039;');
 }

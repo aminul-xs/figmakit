@@ -1,9 +1,9 @@
 // This code runs in Figma's plugin sandbox
 // It has access to the Figma API but no browser/DOM APIs
 
-import { serializeNode } from './serializer';
+import { makePostMessageSafe, serializeNode } from './serializer';
 
-figma.showUI(__html__, { width: 400, height: 600 });
+figma.showUI(__html__, { width: 440, height: 720, themeColors: true });
 
 // Listen for messages from the UI
 figma.ui.onmessage = async (msg) => {
@@ -23,7 +23,9 @@ figma.ui.onmessage = async (msg) => {
 				return;
 			}
 
-			const nodes = selection.map((node) => serializeNode(node));
+			const nodes = makePostMessageSafe(
+				selection.map((node) => serializeNode(node))
+			);
 			console.log('nodes serialized in UI #2:', selection);
 
 			// Send back to UI

@@ -66,4 +66,6 @@ export const WidgetPriority: Record<ElementorWidgetType, number> = {
 	container: 1,
 	heading: 2,
 	image: 2,
+	button: 2,
+	textEditor: 2,
 };

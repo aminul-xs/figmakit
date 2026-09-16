@@ -13,6 +13,14 @@ export function serializeTextNode(node: TextNode) {
 
 		text: {
 			characters: node.characters,
+			segments: node.getStyledTextSegments([
+				'fontSize',
+				'fontName',
+				'fontWeight',
+				'textDecoration',
+				'textCase',
+				'fills',
+			]),
 
 			// Font properties
 			fontSize: node.fontSize,
